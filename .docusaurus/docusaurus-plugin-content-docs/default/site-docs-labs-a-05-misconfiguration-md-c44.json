@@ -1,0 +1,60 @@
+{
+  "id": "labs/a05-misconfiguration",
+  "title": "A05 — Security Misconfiguration",
+  "description": "What this lab covers",
+  "source": "@site/docs/labs/a05-misconfiguration.md",
+  "sourceDirName": "labs",
+  "slug": "/labs/a05-misconfiguration",
+  "permalink": "/docs/labs/a05-misconfiguration",
+  "draft": false,
+  "unlisted": false,
+  "tags": [
+    {
+      "inline": true,
+      "label": "lab",
+      "permalink": "/docs/tags/lab"
+    },
+    {
+      "inline": true,
+      "label": "owasp-a05",
+      "permalink": "/docs/tags/owasp-a-05"
+    },
+    {
+      "inline": true,
+      "label": "nikto",
+      "permalink": "/docs/tags/nikto"
+    },
+    {
+      "inline": true,
+      "label": "xxe",
+      "permalink": "/docs/tags/xxe"
+    },
+    {
+      "inline": true,
+      "label": "directory-listing",
+      "permalink": "/docs/tags/directory-listing"
+    }
+  ],
+  "version": "current",
+  "sidebarPosition": 5,
+  "frontMatter": {
+    "title": "A05 — Security Misconfiguration",
+    "sidebar_position": 5,
+    "tags": [
+      "lab",
+      "owasp-a05",
+      "nikto",
+      "xxe",
+      "directory-listing"
+    ]
+  },
+  "sidebar": "labsSidebar",
+  "previous": {
+    "title": "A03 — Injection (SQLi + XSS)",
+    "permalink": "/docs/labs/a03-injection"
+  },
+  "next": {
+    "title": "A06 — Vulnerable Components",
+    "permalink": "/docs/labs/a06-vulnerable-components"
+  }
+}

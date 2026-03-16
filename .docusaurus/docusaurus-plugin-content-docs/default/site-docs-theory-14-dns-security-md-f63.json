@@ -1,0 +1,48 @@
+{
+  "id": "theory/dns-security",
+  "title": "DNS — Domain Squatting & Certificate Transparency",
+  "description": "Attackers register lookalike domains to impersonate your brand, and Certificate Transparency logs expose subdomains you may not realise are public — both are critical to monitor.",
+  "source": "@site/docs/theory/14-dns-security.md",
+  "sourceDirName": "theory",
+  "slug": "/theory/dns-security",
+  "permalink": "/docs/theory/dns-security",
+  "draft": false,
+  "unlisted": false,
+  "tags": [
+    {
+      "inline": true,
+      "label": "dns",
+      "permalink": "/docs/tags/dns"
+    },
+    {
+      "inline": true,
+      "label": "recon",
+      "permalink": "/docs/tags/recon"
+    },
+    {
+      "inline": true,
+      "label": "defense",
+      "permalink": "/docs/tags/defense"
+    }
+  ],
+  "version": "current",
+  "sidebarPosition": 15,
+  "frontMatter": {
+    "title": "DNS — Domain Squatting & Certificate Transparency",
+    "sidebar_position": 15,
+    "tags": [
+      "dns",
+      "recon",
+      "defense"
+    ]
+  },
+  "sidebar": "theorySidebar",
+  "previous": {
+    "title": "CSRF — Cross-Site Request Forgery",
+    "permalink": "/docs/theory/csrf"
+  },
+  "next": {
+    "title": "IoT, Smart Devices & Zero-day",
+    "permalink": "/docs/theory/iot-zero-day"
+  }
+}

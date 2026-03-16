@@ -1,0 +1,1 @@
+{"tag":{"label":"cracking","permalink":"/docs/tags/cracking","allTagsPath":"/docs/tags","count":1,"items":[{"id":"tools/hashcat","title":"Hashcat","description":"One-liner: GPU-accelerated password hash cracking tool supporting dozens of hash types including JWT, MD5, bcrypt, and NTLM.","permalink":"/docs/tools/hashcat"}],"unlisted":false}}

@@ -1,0 +1,50 @@
+{
+  "id": "theory/injection-xss",
+  "title": "Injection & XSS",
+  "description": "Injection attacks insert malicious code into a trusted context; XSS is the browser-side variant where attacker-controlled scripts execute in a victim's browser.",
+  "source": "@site/docs/theory/16-injection-xss.md",
+  "sourceDirName": "theory",
+  "slug": "/theory/injection-xss",
+  "permalink": "/docs/theory/injection-xss",
+  "draft": false,
+  "unlisted": false,
+  "tags": [
+    {
+      "inline": true,
+      "label": "xss",
+      "permalink": "/docs/tags/xss"
+    },
+    {
+      "inline": true,
+      "label": "injection",
+      "permalink": "/docs/tags/injection"
+    },
+    {
+      "inline": true,
+      "label": "attack",
+      "permalink": "/docs/tags/attack"
+    },
+    {
+      "inline": true,
+      "label": "owasp-a03",
+      "permalink": "/docs/tags/owasp-a-03"
+    }
+  ],
+  "version": "current",
+  "sidebarPosition": 17,
+  "frontMatter": {
+    "title": "Injection & XSS",
+    "sidebar_position": 17,
+    "tags": [
+      "xss",
+      "injection",
+      "attack",
+      "owasp-a03"
+    ]
+  },
+  "sidebar": "theorySidebar",
+  "previous": {
+    "title": "IoT, Smart Devices & Zero-day",
+    "permalink": "/docs/theory/iot-zero-day"
+  }
+}

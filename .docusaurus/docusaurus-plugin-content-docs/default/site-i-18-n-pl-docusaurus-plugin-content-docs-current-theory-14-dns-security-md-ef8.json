@@ -1,0 +1,48 @@
+{
+  "id": "theory/dns-security",
+  "title": "DNS — Domain Squatting i Certificate Transparency",
+  "description": "Atakujący rejestrują domeny imitujące Twoją markę, a logi Certificate Transparency ujawniają subdomeny, które mogłeś nie zdawać sobie sprawy, że są publiczne — obie kwestie wymagają monitorowania.",
+  "source": "@site/i18n/pl/docusaurus-plugin-content-docs/current/theory/14-dns-security.md",
+  "sourceDirName": "theory",
+  "slug": "/theory/dns-security",
+  "permalink": "/pl/docs/theory/dns-security",
+  "draft": false,
+  "unlisted": false,
+  "tags": [
+    {
+      "inline": true,
+      "label": "dns",
+      "permalink": "/pl/docs/tags/dns"
+    },
+    {
+      "inline": true,
+      "label": "recon",
+      "permalink": "/pl/docs/tags/recon"
+    },
+    {
+      "inline": true,
+      "label": "defense",
+      "permalink": "/pl/docs/tags/defense"
+    }
+  ],
+  "version": "current",
+  "sidebarPosition": 15,
+  "frontMatter": {
+    "title": "DNS — Domain Squatting i Certificate Transparency",
+    "sidebar_position": 15,
+    "tags": [
+      "dns",
+      "recon",
+      "defense"
+    ]
+  },
+  "sidebar": "theorySidebar",
+  "previous": {
+    "title": "CSRF — Cross-Site Request Forgery",
+    "permalink": "/pl/docs/theory/csrf"
+  },
+  "next": {
+    "title": "IoT, urządzenia smart i zero-day",
+    "permalink": "/pl/docs/theory/iot-zero-day"
+  }
+}

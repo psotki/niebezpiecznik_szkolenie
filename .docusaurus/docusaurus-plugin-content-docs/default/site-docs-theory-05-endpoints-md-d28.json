@@ -1,0 +1,42 @@
+{
+  "id": "theory/endpoints",
+  "title": "Endpoint Discovery",
+  "description": "Endpoint discovery is the practice of finding hidden API endpoints and admin panels by guessing URL patterns — and it matters because exposed hidden paths can give attackers direct access to sensitive functionality.",
+  "source": "@site/docs/theory/05-endpoints.md",
+  "sourceDirName": "theory",
+  "slug": "/theory/endpoints",
+  "permalink": "/docs/theory/endpoints",
+  "draft": false,
+  "unlisted": false,
+  "tags": [
+    {
+      "inline": true,
+      "label": "recon",
+      "permalink": "/docs/tags/recon"
+    },
+    {
+      "inline": true,
+      "label": "owasp-a01",
+      "permalink": "/docs/tags/owasp-a-01"
+    }
+  ],
+  "version": "current",
+  "sidebarPosition": 6,
+  "frontMatter": {
+    "title": "Endpoint Discovery",
+    "sidebar_position": 6,
+    "tags": [
+      "recon",
+      "owasp-a01"
+    ]
+  },
+  "sidebar": "theorySidebar",
+  "previous": {
+    "title": "Reconnaissance",
+    "permalink": "/docs/theory/recon"
+  },
+  "next": {
+    "title": "IDOR (Insecure Direct Object Reference)",
+    "permalink": "/docs/theory/idor"
+  }
+}

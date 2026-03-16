@@ -1,0 +1,54 @@
+{
+  "id": "theory/jwt",
+  "title": "JWT — JSON Web Token",
+  "description": "JWT to trójczłonowy token zakodowany w base64, używany do uwierzytelniania, jednak błędy konfiguracji — takie jak słabe sekrety lub atak alg:none — mogą pozwolić atakującym na fałszowanie tokenów.",
+  "source": "@site/i18n/pl/docusaurus-plugin-content-docs/current/theory/10-jwt.md",
+  "sourceDirName": "theory",
+  "slug": "/theory/jwt",
+  "permalink": "/pl/docs/theory/jwt",
+  "draft": false,
+  "unlisted": false,
+  "tags": [
+    {
+      "inline": true,
+      "label": "crypto",
+      "permalink": "/pl/docs/tags/crypto"
+    },
+    {
+      "inline": true,
+      "label": "auth",
+      "permalink": "/pl/docs/tags/auth"
+    },
+    {
+      "inline": true,
+      "label": "jwt",
+      "permalink": "/pl/docs/tags/jwt"
+    },
+    {
+      "inline": true,
+      "label": "attack",
+      "permalink": "/pl/docs/tags/attack"
+    }
+  ],
+  "version": "current",
+  "sidebarPosition": 11,
+  "frontMatter": {
+    "title": "JWT — JSON Web Token",
+    "sidebar_position": 11,
+    "tags": [
+      "crypto",
+      "auth",
+      "jwt",
+      "attack"
+    ]
+  },
+  "sidebar": "theorySidebar",
+  "previous": {
+    "title": "Ujawnienie .git — wycieki kodu źródłowego",
+    "permalink": "/pl/docs/theory/git-exposure"
+  },
+  "next": {
+    "title": "Błędy kryptograficzne",
+    "permalink": "/pl/docs/theory/cryptographic-failures"
+  }
+}

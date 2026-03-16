@@ -1,0 +1,60 @@
+{
+  "id": "labs/a01-broken-access-control",
+  "title": "A01 — Broken Access Control",
+  "description": "What this lab covers",
+  "source": "@site/docs/labs/a01-broken-access-control.md",
+  "sourceDirName": "labs",
+  "slug": "/labs/a01-broken-access-control",
+  "permalink": "/docs/labs/a01-broken-access-control",
+  "draft": false,
+  "unlisted": false,
+  "tags": [
+    {
+      "inline": true,
+      "label": "lab",
+      "permalink": "/docs/tags/lab"
+    },
+    {
+      "inline": true,
+      "label": "owasp-a01",
+      "permalink": "/docs/tags/owasp-a-01"
+    },
+    {
+      "inline": true,
+      "label": "idor",
+      "permalink": "/docs/tags/idor"
+    },
+    {
+      "inline": true,
+      "label": "jwt",
+      "permalink": "/docs/tags/jwt"
+    },
+    {
+      "inline": true,
+      "label": "path-traversal",
+      "permalink": "/docs/tags/path-traversal"
+    }
+  ],
+  "version": "current",
+  "sidebarPosition": 2,
+  "frontMatter": {
+    "title": "A01 — Broken Access Control",
+    "sidebar_position": 2,
+    "tags": [
+      "lab",
+      "owasp-a01",
+      "idor",
+      "jwt",
+      "path-traversal"
+    ]
+  },
+  "sidebar": "labsSidebar",
+  "previous": {
+    "title": "⚙️ Lab Setup",
+    "permalink": "/docs/labs/setup"
+  },
+  "next": {
+    "title": "A02 — Cryptographic Failures",
+    "permalink": "/docs/labs/a02-cryptographic-failures"
+  }
+}

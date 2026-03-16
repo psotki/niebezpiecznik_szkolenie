@@ -1,0 +1,54 @@
+{
+  "id": "theory/iot-zero-day",
+  "title": "IoT, urządzenia smart i zero-day",
+  "description": "Urządzenia IoT rozszerzają powierzchnię ataku poprzez przestarzałe oprogramowanie układowe i domyślne dane uwierzytelniające, co sprawia, że podatności zero-day są szczególnie niebezpieczne, ponieważ te urządzenia rzadko są aktualizowane.",
+  "source": "@site/i18n/pl/docusaurus-plugin-content-docs/current/theory/15-iot-zero-day.md",
+  "sourceDirName": "theory",
+  "slug": "/theory/iot-zero-day",
+  "permalink": "/pl/docs/theory/iot-zero-day",
+  "draft": false,
+  "unlisted": false,
+  "tags": [
+    {
+      "inline": true,
+      "label": "iot",
+      "permalink": "/pl/docs/tags/iot"
+    },
+    {
+      "inline": true,
+      "label": "zero-day",
+      "permalink": "/pl/docs/tags/zero-day"
+    },
+    {
+      "inline": true,
+      "label": "attack",
+      "permalink": "/pl/docs/tags/attack"
+    },
+    {
+      "inline": true,
+      "label": "recon",
+      "permalink": "/pl/docs/tags/recon"
+    }
+  ],
+  "version": "current",
+  "sidebarPosition": 16,
+  "frontMatter": {
+    "title": "IoT, urządzenia smart i zero-day",
+    "sidebar_position": 16,
+    "tags": [
+      "iot",
+      "zero-day",
+      "attack",
+      "recon"
+    ]
+  },
+  "sidebar": "theorySidebar",
+  "previous": {
+    "title": "DNS — Domain Squatting i Certificate Transparency",
+    "permalink": "/pl/docs/theory/dns-security"
+  },
+  "next": {
+    "title": "Injection i XSS",
+    "permalink": "/pl/docs/theory/injection-xss"
+  }
+}

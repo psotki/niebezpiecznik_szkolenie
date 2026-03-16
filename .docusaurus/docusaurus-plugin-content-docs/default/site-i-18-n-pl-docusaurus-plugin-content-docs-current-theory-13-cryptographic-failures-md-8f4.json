@@ -1,0 +1,48 @@
+{
+  "id": "theory/cryptographic-failures",
+  "title": "Błędy kryptograficzne",
+  "description": "Cryptographic Failures (OWASP A02:2021) obejmuje słabe algorytmy, złą konfigurację TLS, niezabezpieczone przechowywanie haseł i wycieki sekretów w kodzie — wszystko to może prowadzić do ujawnienia wrażliwych danych.",
+  "source": "@site/i18n/pl/docusaurus-plugin-content-docs/current/theory/13-cryptographic-failures.md",
+  "sourceDirName": "theory",
+  "slug": "/theory/cryptographic-failures",
+  "permalink": "/pl/docs/theory/cryptographic-failures",
+  "draft": false,
+  "unlisted": false,
+  "tags": [
+    {
+      "inline": true,
+      "label": "crypto",
+      "permalink": "/pl/docs/tags/crypto"
+    },
+    {
+      "inline": true,
+      "label": "attack",
+      "permalink": "/pl/docs/tags/attack"
+    },
+    {
+      "inline": true,
+      "label": "owasp-a02",
+      "permalink": "/pl/docs/tags/owasp-a-02"
+    }
+  ],
+  "version": "current",
+  "sidebarPosition": 14,
+  "frontMatter": {
+    "title": "Błędy kryptograficzne",
+    "sidebar_position": 14,
+    "tags": [
+      "crypto",
+      "attack",
+      "owasp-a02"
+    ]
+  },
+  "sidebar": "theorySidebar",
+  "previous": {
+    "title": "JWT — JSON Web Token",
+    "permalink": "/pl/docs/theory/jwt"
+  },
+  "next": {
+    "title": "Nagłówki HTTP i fałszowanie CF-Connecting-IP",
+    "permalink": "/pl/docs/theory/http-headers"
+  }
+}

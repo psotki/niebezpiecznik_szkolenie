@@ -1,0 +1,48 @@
+{
+  "id": "theory/cookies-gdpr",
+  "title": "Cookies i RODO",
+  "description": "Atrybuty bezpieczeństwa cookies chronią użytkowników przed atakami XSS i CSRF, podczas gdy RODO nakłada obowiązek, aby zgoda na niezbędne pliki cookie była wyrażana dobrowolnie i nigdy nie była zaznaczona z góry.",
+  "source": "@site/i18n/pl/docusaurus-plugin-content-docs/current/theory/08-cookies-gdpr.md",
+  "sourceDirName": "theory",
+  "slug": "/theory/cookies-gdpr",
+  "permalink": "/pl/docs/theory/cookies-gdpr",
+  "draft": false,
+  "unlisted": false,
+  "tags": [
+    {
+      "inline": true,
+      "label": "cookies",
+      "permalink": "/pl/docs/tags/cookies"
+    },
+    {
+      "inline": true,
+      "label": "gdpr",
+      "permalink": "/pl/docs/tags/gdpr"
+    },
+    {
+      "inline": true,
+      "label": "defense",
+      "permalink": "/pl/docs/tags/defense"
+    }
+  ],
+  "version": "current",
+  "sidebarPosition": 9,
+  "frontMatter": {
+    "title": "Cookies i RODO",
+    "sidebar_position": 9,
+    "tags": [
+      "cookies",
+      "gdpr",
+      "defense"
+    ]
+  },
+  "sidebar": "theorySidebar",
+  "previous": {
+    "title": "TLS i certyfikaty",
+    "permalink": "/pl/docs/theory/tls-certificates"
+  },
+  "next": {
+    "title": "Ujawnienie .git — wycieki kodu źródłowego",
+    "permalink": "/pl/docs/theory/git-exposure"
+  }
+}

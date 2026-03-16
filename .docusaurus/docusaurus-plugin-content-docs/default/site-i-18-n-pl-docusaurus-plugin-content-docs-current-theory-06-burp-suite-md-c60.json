@@ -1,0 +1,48 @@
+{
+  "id": "theory/burp-suite",
+  "title": "Burp Suite — przechwytywanie HTTP",
+  "description": "Burp Suite to proxy typu man-in-the-middle, który przechwytuje i modyfikuje ruch HTTP/S między przeglądarką a serwerem — jest to podstawowe narzędzie do testowania bezpieczeństwa aplikacji webowych.",
+  "source": "@site/i18n/pl/docusaurus-plugin-content-docs/current/theory/06-burp-suite.md",
+  "sourceDirName": "theory",
+  "slug": "/theory/burp-suite",
+  "permalink": "/pl/docs/theory/burp-suite",
+  "draft": false,
+  "unlisted": false,
+  "tags": [
+    {
+      "inline": true,
+      "label": "tool",
+      "permalink": "/pl/docs/tags/tool"
+    },
+    {
+      "inline": true,
+      "label": "proxy",
+      "permalink": "/pl/docs/tags/proxy"
+    },
+    {
+      "inline": true,
+      "label": "recon",
+      "permalink": "/pl/docs/tags/recon"
+    }
+  ],
+  "version": "current",
+  "sidebarPosition": 7,
+  "frontMatter": {
+    "title": "Burp Suite — przechwytywanie HTTP",
+    "sidebar_position": 7,
+    "tags": [
+      "tool",
+      "proxy",
+      "recon"
+    ]
+  },
+  "sidebar": "theorySidebar",
+  "previous": {
+    "title": "Eskalacja uprawnień",
+    "permalink": "/pl/docs/theory/privilege-escalation"
+  },
+  "next": {
+    "title": "TLS i certyfikaty",
+    "permalink": "/pl/docs/theory/tls-certificates"
+  }
+}

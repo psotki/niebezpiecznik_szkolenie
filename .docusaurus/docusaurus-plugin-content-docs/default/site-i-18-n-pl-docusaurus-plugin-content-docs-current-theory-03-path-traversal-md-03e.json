@@ -1,0 +1,54 @@
+{
+  "id": "theory/path-traversal",
+  "title": "Path Traversal",
+  "description": "Path traversal pozwala napastnikowi wyjść poza zamierzony katalog przez wstrzyknięcie sekwencji ../ do ścieżki pliku, docierając do plików, których aplikacja nigdy nie miała serwować.",
+  "source": "@site/i18n/pl/docusaurus-plugin-content-docs/current/theory/03-path-traversal.md",
+  "sourceDirName": "theory",
+  "slug": "/theory/path-traversal",
+  "permalink": "/pl/docs/theory/path-traversal",
+  "draft": false,
+  "unlisted": false,
+  "tags": [
+    {
+      "inline": true,
+      "label": "path-traversal",
+      "permalink": "/pl/docs/tags/path-traversal"
+    },
+    {
+      "inline": true,
+      "label": "access-control",
+      "permalink": "/pl/docs/tags/access-control"
+    },
+    {
+      "inline": true,
+      "label": "directory-traversal",
+      "permalink": "/pl/docs/tags/directory-traversal"
+    },
+    {
+      "inline": true,
+      "label": "misconfiguration",
+      "permalink": "/pl/docs/tags/misconfiguration"
+    }
+  ],
+  "version": "current",
+  "sidebarPosition": 4,
+  "frontMatter": {
+    "title": "Path Traversal",
+    "sidebar_position": 4,
+    "tags": [
+      "path-traversal",
+      "access-control",
+      "directory-traversal",
+      "misconfiguration"
+    ]
+  },
+  "sidebar": "theorySidebar",
+  "previous": {
+    "title": "IDOR (Insecure Direct Object Reference)",
+    "permalink": "/pl/docs/theory/idor"
+  },
+  "next": {
+    "title": "Eskalacja uprawnień",
+    "permalink": "/pl/docs/theory/privilege-escalation"
+  }
+}

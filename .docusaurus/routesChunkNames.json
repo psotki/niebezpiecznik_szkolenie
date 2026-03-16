@@ -1,0 +1,458 @@
+{
+  "/pl/docs-3e0": {
+    "__comp": "5e95c892",
+    "__context": {
+      "plugin": "aba21aa0"
+    }
+  },
+  "/pl/docs-8f6": {
+    "__comp": "a7bd4aaa",
+    "__props": "533e2b5f"
+  },
+  "/pl/docs/tags-a4a": {
+    "__comp": "3720c009",
+    "__props": "9e3b6250"
+  },
+  "/pl/docs/tags/access-control-408": {
+    "__comp": "df203c0f",
+    "__props": "811f7de1"
+  },
+  "/pl/docs/tags/attack-802": {
+    "__comp": "df203c0f",
+    "__props": "49fc9d5e"
+  },
+  "/pl/docs/tags/auth-879": {
+    "__comp": "df203c0f",
+    "__props": "ecbf8ea8"
+  },
+  "/pl/docs/tags/authorization-d5a": {
+    "__comp": "df203c0f",
+    "__props": "b50db467"
+  },
+  "/pl/docs/tags/brute-force-5e1": {
+    "__comp": "df203c0f",
+    "__props": "07b02387"
+  },
+  "/pl/docs/tags/cloud-89d": {
+    "__comp": "df203c0f",
+    "__props": "fabbd0bb"
+  },
+  "/pl/docs/tags/cookies-a45": {
+    "__comp": "df203c0f",
+    "__props": "5d27db53"
+  },
+  "/pl/docs/tags/cracking-aca": {
+    "__comp": "df203c0f",
+    "__props": "c6debb3f"
+  },
+  "/pl/docs/tags/crypto-719": {
+    "__comp": "df203c0f",
+    "__props": "ca41a682"
+  },
+  "/pl/docs/tags/csrf-b19": {
+    "__comp": "df203c0f",
+    "__props": "94a4ce46"
+  },
+  "/pl/docs/tags/cve-8ae": {
+    "__comp": "df203c0f",
+    "__props": "0e495009"
+  },
+  "/pl/docs/tags/defense-448": {
+    "__comp": "df203c0f",
+    "__props": "6f1878ba"
+  },
+  "/pl/docs/tags/dependency-scanning-d96": {
+    "__comp": "df203c0f",
+    "__props": "7f76d721"
+  },
+  "/pl/docs/tags/deserialization-677": {
+    "__comp": "df203c0f",
+    "__props": "bcaeb15a"
+  },
+  "/pl/docs/tags/directory-listing-fab": {
+    "__comp": "df203c0f",
+    "__props": "f6a50104"
+  },
+  "/pl/docs/tags/directory-traversal-4f0": {
+    "__comp": "df203c0f",
+    "__props": "59ce11e9"
+  },
+  "/pl/docs/tags/dns-5e9": {
+    "__comp": "df203c0f",
+    "__props": "f04ccd7b"
+  },
+  "/pl/docs/tags/enumeration-bf9": {
+    "__comp": "df203c0f",
+    "__props": "12b4c733"
+  },
+  "/pl/docs/tags/exploitation-c95": {
+    "__comp": "df203c0f",
+    "__props": "258f5c48"
+  },
+  "/pl/docs/tags/fingerprinting-309": {
+    "__comp": "df203c0f",
+    "__props": "c8d7ef34"
+  },
+  "/pl/docs/tags/gdpr-46a": {
+    "__comp": "df203c0f",
+    "__props": "0ae72363"
+  },
+  "/pl/docs/tags/google-dorking-c88": {
+    "__comp": "df203c0f",
+    "__props": "a4415fbd"
+  },
+  "/pl/docs/tags/hashing-8f5": {
+    "__comp": "df203c0f",
+    "__props": "65ab06ed"
+  },
+  "/pl/docs/tags/headers-abb": {
+    "__comp": "df203c0f",
+    "__props": "567eed9b"
+  },
+  "/pl/docs/tags/http-0d4": {
+    "__comp": "df203c0f",
+    "__props": "edfa707b"
+  },
+  "/pl/docs/tags/idor-61e": {
+    "__comp": "df203c0f",
+    "__props": "11bde2a3"
+  },
+  "/pl/docs/tags/injection-c40": {
+    "__comp": "df203c0f",
+    "__props": "87477de9"
+  },
+  "/pl/docs/tags/iot-2e8": {
+    "__comp": "df203c0f",
+    "__props": "71248eb2"
+  },
+  "/pl/docs/tags/java-809": {
+    "__comp": "df203c0f",
+    "__props": "c67a6af1"
+  },
+  "/pl/docs/tags/javascript-436": {
+    "__comp": "df203c0f",
+    "__props": "a1760a67"
+  },
+  "/pl/docs/tags/jwt-2a2": {
+    "__comp": "df203c0f",
+    "__props": "387918f6"
+  },
+  "/pl/docs/tags/lab-1da": {
+    "__comp": "df203c0f",
+    "__props": "ce0be315"
+  },
+  "/pl/docs/tags/linux-518": {
+    "__comp": "df203c0f",
+    "__props": "034a71db"
+  },
+  "/pl/docs/tags/misconfiguration-f50": {
+    "__comp": "df203c0f",
+    "__props": "4b00edbb"
+  },
+  "/pl/docs/tags/mobile-d7c": {
+    "__comp": "df203c0f",
+    "__props": "b44f17f5"
+  },
+  "/pl/docs/tags/nikto-be4": {
+    "__comp": "df203c0f",
+    "__props": "f6fb715a"
+  },
+  "/pl/docs/tags/osint-65a": {
+    "__comp": "df203c0f",
+    "__props": "ac278b9b"
+  },
+  "/pl/docs/tags/owasp-6a6": {
+    "__comp": "df203c0f",
+    "__props": "82706596"
+  },
+  "/pl/docs/tags/owasp-a-01-be3": {
+    "__comp": "df203c0f",
+    "__props": "a24d4cac"
+  },
+  "/pl/docs/tags/owasp-a-02-1df": {
+    "__comp": "df203c0f",
+    "__props": "c26fe5d6"
+  },
+  "/pl/docs/tags/owasp-a-03-5c9": {
+    "__comp": "df203c0f",
+    "__props": "225a1f01"
+  },
+  "/pl/docs/tags/owasp-a-05-8d9": {
+    "__comp": "df203c0f",
+    "__props": "5c9e8fa9"
+  },
+  "/pl/docs/tags/owasp-a-06-c4b": {
+    "__comp": "df203c0f",
+    "__props": "0f6aa93f"
+  },
+  "/pl/docs/tags/owasp-a-07-155": {
+    "__comp": "df203c0f",
+    "__props": "9620ed63"
+  },
+  "/pl/docs/tags/owasp-a-08-4fc": {
+    "__comp": "df203c0f",
+    "__props": "2ddb41be"
+  },
+  "/pl/docs/tags/owasp-a-10-76b": {
+    "__comp": "df203c0f",
+    "__props": "73bb9e17"
+  },
+  "/pl/docs/tags/path-traversal-46d": {
+    "__comp": "df203c0f",
+    "__props": "581b18ab"
+  },
+  "/pl/docs/tags/php-e76": {
+    "__comp": "df203c0f",
+    "__props": "07c7e5e5"
+  },
+  "/pl/docs/tags/privesc-f18": {
+    "__comp": "df203c0f",
+    "__props": "b084f568"
+  },
+  "/pl/docs/tags/privilege-escalation-8bd": {
+    "__comp": "df203c0f",
+    "__props": "385bd5d6"
+  },
+  "/pl/docs/tags/proxy-a6b": {
+    "__comp": "df203c0f",
+    "__props": "79539806"
+  },
+  "/pl/docs/tags/recon-ec2": {
+    "__comp": "df203c0f",
+    "__props": "3a520363"
+  },
+  "/pl/docs/tags/scanning-5a5": {
+    "__comp": "df203c0f",
+    "__props": "3b6f9ec6"
+  },
+  "/pl/docs/tags/secrets-bea": {
+    "__comp": "df203c0f",
+    "__props": "9bea72c1"
+  },
+  "/pl/docs/tags/session-ce0": {
+    "__comp": "df203c0f",
+    "__props": "af1084b1"
+  },
+  "/pl/docs/tags/source-code-9f5": {
+    "__comp": "df203c0f",
+    "__props": "8dda5716"
+  },
+  "/pl/docs/tags/spoofing-c67": {
+    "__comp": "df203c0f",
+    "__props": "fcd6d0f8"
+  },
+  "/pl/docs/tags/sql-injection-9b2": {
+    "__comp": "df203c0f",
+    "__props": "126fb71f"
+  },
+  "/pl/docs/tags/ssrf-5ed": {
+    "__comp": "df203c0f",
+    "__props": "3b7a88e6"
+  },
+  "/pl/docs/tags/sudo-c12": {
+    "__comp": "df203c0f",
+    "__props": "4960ff10"
+  },
+  "/pl/docs/tags/suid-77a": {
+    "__comp": "df203c0f",
+    "__props": "8d3caa61"
+  },
+  "/pl/docs/tags/tls-d80": {
+    "__comp": "df203c0f",
+    "__props": "8e1bd853"
+  },
+  "/pl/docs/tags/tool-56f": {
+    "__comp": "df203c0f",
+    "__props": "4be7e535"
+  },
+  "/pl/docs/tags/tools-66b": {
+    "__comp": "df203c0f",
+    "__props": "41da3bcf"
+  },
+  "/pl/docs/tags/xss-1d0": {
+    "__comp": "df203c0f",
+    "__props": "3183b659"
+  },
+  "/pl/docs/tags/xxe-94f": {
+    "__comp": "df203c0f",
+    "__props": "40e9fea4"
+  },
+  "/pl/docs/tags/zero-day-8f6": {
+    "__comp": "df203c0f",
+    "__props": "d53100cb"
+  },
+  "/pl/docs-475": {
+    "__comp": "a94703ab"
+  },
+  "/pl/docs/labs/a01-broken-access-control-6de": {
+    "__comp": "17896441",
+    "content": "c18a0c10"
+  },
+  "/pl/docs/labs/a02-cryptographic-failures-ea5": {
+    "__comp": "17896441",
+    "content": "07e7fefa"
+  },
+  "/pl/docs/labs/a03-injection-2c4": {
+    "__comp": "17896441",
+    "content": "bd51c1e5"
+  },
+  "/pl/docs/labs/a05-misconfiguration-676": {
+    "__comp": "17896441",
+    "content": "0d3583be"
+  },
+  "/pl/docs/labs/a06-vulnerable-components-e32": {
+    "__comp": "17896441",
+    "content": "de5a39d6"
+  },
+  "/pl/docs/labs/a07-auth-failures-fa2": {
+    "__comp": "17896441",
+    "content": "531d43e0"
+  },
+  "/pl/docs/labs/a08-integrity-failures-10d": {
+    "__comp": "17896441",
+    "content": "f889ea8f"
+  },
+  "/pl/docs/labs/a10-ssrf-f50": {
+    "__comp": "17896441",
+    "content": "85ddbdeb"
+  },
+  "/pl/docs/labs/setup-8a3": {
+    "__comp": "17896441",
+    "content": "1a88ada3"
+  },
+  "/pl/docs/theory/burp-suite-e5b": {
+    "__comp": "17896441",
+    "content": "c60225f2"
+  },
+  "/pl/docs/theory/cookies-gdpr-e05": {
+    "__comp": "17896441",
+    "content": "d54a8922"
+  },
+  "/pl/docs/theory/cryptographic-failures-46f": {
+    "__comp": "17896441",
+    "content": "8f47f429"
+  },
+  "/pl/docs/theory/csrf-e14": {
+    "__comp": "17896441",
+    "content": "7435516f"
+  },
+  "/pl/docs/theory/dns-security-577": {
+    "__comp": "17896441",
+    "content": "ef86141f"
+  },
+  "/pl/docs/theory/endpoints-4ae": {
+    "__comp": "17896441",
+    "content": "9516944e"
+  },
+  "/pl/docs/theory/git-exposure-b05": {
+    "__comp": "17896441",
+    "content": "fbd9c049"
+  },
+  "/pl/docs/theory/http-headers-8b0": {
+    "__comp": "17896441",
+    "content": "8c5cba3d"
+  },
+  "/pl/docs/theory/idor-3c8": {
+    "__comp": "17896441",
+    "content": "1bd1d11c"
+  },
+  "/pl/docs/theory/injection-xss-d79": {
+    "__comp": "17896441",
+    "content": "8ab0bedb"
+  },
+  "/pl/docs/theory/intro-48e": {
+    "__comp": "17896441",
+    "content": "4be9e26c"
+  },
+  "/pl/docs/theory/iot-zero-day-d76": {
+    "__comp": "17896441",
+    "content": "9250b968"
+  },
+  "/pl/docs/theory/jwt-db0": {
+    "__comp": "17896441",
+    "content": "8109e6a2"
+  },
+  "/pl/docs/theory/path-traversal-a95": {
+    "__comp": "17896441",
+    "content": "03e0c6e5"
+  },
+  "/pl/docs/theory/privilege-escalation-194": {
+    "__comp": "17896441",
+    "content": "307e47de"
+  },
+  "/pl/docs/theory/recon-10c": {
+    "__comp": "17896441",
+    "content": "50a96bd4"
+  },
+  "/pl/docs/theory/tls-certificates-ff3": {
+    "__comp": "17896441",
+    "content": "ef42c7fa"
+  },
+  "/pl/docs/tools/burp-suite-3ac": {
+    "__comp": "17896441",
+    "content": "bed567f8"
+  },
+  "/pl/docs/tools/dnstwist-748": {
+    "__comp": "17896441",
+    "content": "94ef7153"
+  },
+  "/pl/docs/tools/domxss-libs-95e": {
+    "__comp": "17896441",
+    "content": "b9c824c3"
+  },
+  "/pl/docs/tools/git-dumper-921": {
+    "__comp": "17896441",
+    "content": "fdaba3bd"
+  },
+  "/pl/docs/tools/gobuster-dirbuster-166": {
+    "__comp": "17896441",
+    "content": "fd78ca6e"
+  },
+  "/pl/docs/tools/hashcat-21f": {
+    "__comp": "17896441",
+    "content": "d32a0b5b"
+  },
+  "/pl/docs/tools/http-toolkit-efb": {
+    "__comp": "17896441",
+    "content": "37f5aa47"
+  },
+  "/pl/docs/tools/hydra-576": {
+    "__comp": "17896441",
+    "content": "3c5fc746"
+  },
+  "/pl/docs/tools/intro-f96": {
+    "__comp": "17896441",
+    "content": "5cca289c"
+  },
+  "/pl/docs/tools/jwt-tool-b51": {
+    "__comp": "17896441",
+    "content": "079eb485"
+  },
+  "/pl/docs/tools/metasploit-5f7": {
+    "__comp": "17896441",
+    "content": "b137cead"
+  },
+  "/pl/docs/tools/nikto-d93": {
+    "__comp": "17896441",
+    "content": "139a0414"
+  },
+  "/pl/docs/tools/sqlmap-02c": {
+    "__comp": "17896441",
+    "content": "380cc600"
+  },
+  "/pl/docs/tools/traitor-862": {
+    "__comp": "17896441",
+    "content": "61eee0de"
+  },
+  "/pl/docs/websites/reference-eca": {
+    "__comp": "17896441",
+    "content": "cfcdd508"
+  },
+  "/pl/-127": {
+    "__comp": "c4f5d8e4",
+    "__context": {
+      "plugin": "a7456010"
+    },
+    "config": "5e9f5e1a"
+  }
+}

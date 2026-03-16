@@ -1,0 +1,50 @@
+{
+  "id": "tools/domxss-libs",
+  "title": "DOMPurify & escape-goat — Biblioteki obrony przed XSS",
+  "description": "Jedno zdanie: Biblioteki JavaScript po stronie klienta do bezpiecznego wstawiania treści dostarczanych przez użytkownika do DOM — zapobieganie XSS na etapie wyjścia.",
+  "source": "@site/i18n/pl/docusaurus-plugin-content-docs/current/tools/domxss-libs.md",
+  "sourceDirName": "tools",
+  "slug": "/tools/domxss-libs",
+  "permalink": "/pl/docs/tools/domxss-libs",
+  "draft": false,
+  "unlisted": false,
+  "tags": [
+    {
+      "inline": true,
+      "label": "tool",
+      "permalink": "/pl/docs/tags/tool"
+    },
+    {
+      "inline": true,
+      "label": "defense",
+      "permalink": "/pl/docs/tags/defense"
+    },
+    {
+      "inline": true,
+      "label": "xss",
+      "permalink": "/pl/docs/tags/xss"
+    },
+    {
+      "inline": true,
+      "label": "javascript",
+      "permalink": "/pl/docs/tags/javascript"
+    }
+  ],
+  "version": "current",
+  "sidebarPosition": 14,
+  "frontMatter": {
+    "title": "DOMPurify & escape-goat — Biblioteki obrony przed XSS",
+    "sidebar_position": 14,
+    "tags": [
+      "tool",
+      "defense",
+      "xss",
+      "javascript"
+    ]
+  },
+  "sidebar": "toolsSidebar",
+  "previous": {
+    "title": "Nikto",
+    "permalink": "/pl/docs/tools/nikto"
+  }
+}

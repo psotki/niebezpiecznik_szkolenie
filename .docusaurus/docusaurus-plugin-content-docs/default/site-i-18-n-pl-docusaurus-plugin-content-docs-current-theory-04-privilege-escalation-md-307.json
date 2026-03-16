@@ -1,0 +1,66 @@
+{
+  "id": "theory/privilege-escalation",
+  "title": "Eskalacja uprawnień",
+  "description": "Eskalacja uprawnień zamienia ograniczony przyczółek w pełną kontrolę nad systemem — często poprzez wykorzystanie błędnych konfiguracji, słabych reguł sudo lub niezałatanych CVE.",
+  "source": "@site/i18n/pl/docusaurus-plugin-content-docs/current/theory/04-privilege-escalation.md",
+  "sourceDirName": "theory",
+  "slug": "/theory/privilege-escalation",
+  "permalink": "/pl/docs/theory/privilege-escalation",
+  "draft": false,
+  "unlisted": false,
+  "tags": [
+    {
+      "inline": true,
+      "label": "privilege-escalation",
+      "permalink": "/pl/docs/tags/privilege-escalation"
+    },
+    {
+      "inline": true,
+      "label": "linux",
+      "permalink": "/pl/docs/tags/linux"
+    },
+    {
+      "inline": true,
+      "label": "access-control",
+      "permalink": "/pl/docs/tags/access-control"
+    },
+    {
+      "inline": true,
+      "label": "sudo",
+      "permalink": "/pl/docs/tags/sudo"
+    },
+    {
+      "inline": true,
+      "label": "suid",
+      "permalink": "/pl/docs/tags/suid"
+    },
+    {
+      "inline": true,
+      "label": "cve",
+      "permalink": "/pl/docs/tags/cve"
+    }
+  ],
+  "version": "current",
+  "sidebarPosition": 5,
+  "frontMatter": {
+    "title": "Eskalacja uprawnień",
+    "sidebar_position": 5,
+    "tags": [
+      "privilege-escalation",
+      "linux",
+      "access-control",
+      "sudo",
+      "suid",
+      "cve"
+    ]
+  },
+  "sidebar": "theorySidebar",
+  "previous": {
+    "title": "Path Traversal",
+    "permalink": "/pl/docs/theory/path-traversal"
+  },
+  "next": {
+    "title": "Burp Suite — przechwytywanie HTTP",
+    "permalink": "/pl/docs/theory/burp-suite"
+  }
+}

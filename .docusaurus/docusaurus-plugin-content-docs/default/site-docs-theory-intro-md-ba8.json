@@ -1,0 +1,23 @@
+{
+  "id": "theory/intro",
+  "title": "Security Theory Overview",
+  "description": "Welcome to the Security Theory section. These notes are organized from the Niebezpiecznik cybersecurity training (March 2026) and cover OWASP-aligned attack categories.",
+  "source": "@site/docs/theory/intro.md",
+  "sourceDirName": "theory",
+  "slug": "/theory/intro",
+  "permalink": "/docs/theory/intro",
+  "draft": false,
+  "unlisted": false,
+  "tags": [],
+  "version": "current",
+  "sidebarPosition": 1,
+  "frontMatter": {
+    "title": "Security Theory Overview",
+    "sidebar_position": 1
+  },
+  "sidebar": "theorySidebar",
+  "next": {
+    "title": "Reconnaissance",
+    "permalink": "/docs/theory/recon"
+  }
+}

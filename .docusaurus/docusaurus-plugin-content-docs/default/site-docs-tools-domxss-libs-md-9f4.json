@@ -1,0 +1,50 @@
+{
+  "id": "tools/domxss-libs",
+  "title": "DOMPurify & escape-goat — XSS Defense Libraries",
+  "description": "One-liner: Client-side JavaScript libraries for safely inserting user-supplied content into the DOM — preventing XSS at the output stage.",
+  "source": "@site/docs/tools/domxss-libs.md",
+  "sourceDirName": "tools",
+  "slug": "/tools/domxss-libs",
+  "permalink": "/docs/tools/domxss-libs",
+  "draft": false,
+  "unlisted": false,
+  "tags": [
+    {
+      "inline": true,
+      "label": "tool",
+      "permalink": "/docs/tags/tool"
+    },
+    {
+      "inline": true,
+      "label": "defense",
+      "permalink": "/docs/tags/defense"
+    },
+    {
+      "inline": true,
+      "label": "xss",
+      "permalink": "/docs/tags/xss"
+    },
+    {
+      "inline": true,
+      "label": "javascript",
+      "permalink": "/docs/tags/javascript"
+    }
+  ],
+  "version": "current",
+  "sidebarPosition": 14,
+  "frontMatter": {
+    "title": "DOMPurify & escape-goat — XSS Defense Libraries",
+    "sidebar_position": 14,
+    "tags": [
+      "tool",
+      "defense",
+      "xss",
+      "javascript"
+    ]
+  },
+  "sidebar": "toolsSidebar",
+  "previous": {
+    "title": "Nikto",
+    "permalink": "/docs/tools/nikto"
+  }
+}

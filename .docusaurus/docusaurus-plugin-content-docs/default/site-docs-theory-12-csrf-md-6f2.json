@@ -1,0 +1,48 @@
+{
+  "id": "theory/csrf",
+  "title": "CSRF — Cross-Site Request Forgery",
+  "description": "CSRF tricks a logged-in user's browser into sending an authenticated request to a target site without their knowledge, because browsers automatically attach cookies to matching requests.",
+  "source": "@site/docs/theory/12-csrf.md",
+  "sourceDirName": "theory",
+  "slug": "/theory/csrf",
+  "permalink": "/docs/theory/csrf",
+  "draft": false,
+  "unlisted": false,
+  "tags": [
+    {
+      "inline": true,
+      "label": "csrf",
+      "permalink": "/docs/tags/csrf"
+    },
+    {
+      "inline": true,
+      "label": "attack",
+      "permalink": "/docs/tags/attack"
+    },
+    {
+      "inline": true,
+      "label": "http",
+      "permalink": "/docs/tags/http"
+    }
+  ],
+  "version": "current",
+  "sidebarPosition": 13,
+  "frontMatter": {
+    "title": "CSRF — Cross-Site Request Forgery",
+    "sidebar_position": 13,
+    "tags": [
+      "csrf",
+      "attack",
+      "http"
+    ]
+  },
+  "sidebar": "theorySidebar",
+  "previous": {
+    "title": "HTTP Headers & CF-Connecting-IP Spoofing",
+    "permalink": "/docs/theory/http-headers"
+  },
+  "next": {
+    "title": "DNS — Domain Squatting & Certificate Transparency",
+    "permalink": "/docs/theory/dns-security"
+  }
+}

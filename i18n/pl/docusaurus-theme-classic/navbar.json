@@ -1,0 +1,22 @@
+{
+  "title": {
+    "message": "🔐 CyberSec KB",
+    "description": "The title in the navbar"
+  },
+  "item.label.📚 Security Theory": {
+    "message": "📚 Teoria Bezpieczeństwa",
+    "description": "Navbar item label"
+  },
+  "item.label.🛠 Tools Reference": {
+    "message": "🛠 Narzędzia",
+    "description": "Navbar item label"
+  },
+  "item.label.🌐 Websites": {
+    "message": "🌐 Strony",
+    "description": "Navbar item label"
+  },
+  "item.label.🧪 Labs": {
+    "message": "🧪 Laboratoria",
+    "description": "Navbar item label"
+  }
+}

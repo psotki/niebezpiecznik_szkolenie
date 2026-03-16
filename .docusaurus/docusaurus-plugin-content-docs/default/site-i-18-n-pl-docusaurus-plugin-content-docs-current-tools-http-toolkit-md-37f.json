@@ -1,0 +1,48 @@
+{
+  "id": "tools/http-toolkit",
+  "title": "HTTP Toolkit",
+  "description": "Jedno zdanie: Przechwytuje ruch HTTP ze szczególnym uwzględnieniem aplikacji mobilnych — zwłaszcza Android przez ADB.",
+  "source": "@site/i18n/pl/docusaurus-plugin-content-docs/current/tools/http-toolkit.md",
+  "sourceDirName": "tools",
+  "slug": "/tools/http-toolkit",
+  "permalink": "/pl/docs/tools/http-toolkit",
+  "draft": false,
+  "unlisted": false,
+  "tags": [
+    {
+      "inline": true,
+      "label": "tool",
+      "permalink": "/pl/docs/tags/tool"
+    },
+    {
+      "inline": true,
+      "label": "proxy",
+      "permalink": "/pl/docs/tags/proxy"
+    },
+    {
+      "inline": true,
+      "label": "mobile",
+      "permalink": "/pl/docs/tags/mobile"
+    }
+  ],
+  "version": "current",
+  "sidebarPosition": 6,
+  "frontMatter": {
+    "title": "HTTP Toolkit",
+    "sidebar_position": 6,
+    "tags": [
+      "tool",
+      "proxy",
+      "mobile"
+    ]
+  },
+  "sidebar": "toolsSidebar",
+  "previous": {
+    "title": "Burp Suite",
+    "permalink": "/pl/docs/tools/burp-suite"
+  },
+  "next": {
+    "title": "Metasploit",
+    "permalink": "/pl/docs/tools/metasploit"
+  }
+}

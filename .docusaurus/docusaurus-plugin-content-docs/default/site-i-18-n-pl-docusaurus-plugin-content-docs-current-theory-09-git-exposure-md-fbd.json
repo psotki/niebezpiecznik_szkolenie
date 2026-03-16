@@ -1,0 +1,48 @@
+{
+  "id": "theory/git-exposure",
+  "title": "Ujawnienie .git — wycieki kodu źródłowego",
+  "description": "Ujawniony katalog .git/ na serwerze webowym pozwala atakującym zrekonstruować cały kod źródłowy aplikacji — łącznie z sekretami i kluczami API z pełnej historii commitów.",
+  "source": "@site/i18n/pl/docusaurus-plugin-content-docs/current/theory/09-git-exposure.md",
+  "sourceDirName": "theory",
+  "slug": "/theory/git-exposure",
+  "permalink": "/pl/docs/theory/git-exposure",
+  "draft": false,
+  "unlisted": false,
+  "tags": [
+    {
+      "inline": true,
+      "label": "recon",
+      "permalink": "/pl/docs/tags/recon"
+    },
+    {
+      "inline": true,
+      "label": "attack",
+      "permalink": "/pl/docs/tags/attack"
+    },
+    {
+      "inline": true,
+      "label": "source-code",
+      "permalink": "/pl/docs/tags/source-code"
+    }
+  ],
+  "version": "current",
+  "sidebarPosition": 10,
+  "frontMatter": {
+    "title": "Ujawnienie .git — wycieki kodu źródłowego",
+    "sidebar_position": 10,
+    "tags": [
+      "recon",
+      "attack",
+      "source-code"
+    ]
+  },
+  "sidebar": "theorySidebar",
+  "previous": {
+    "title": "Cookies i RODO",
+    "permalink": "/pl/docs/theory/cookies-gdpr"
+  },
+  "next": {
+    "title": "JWT — JSON Web Token",
+    "permalink": "/pl/docs/theory/jwt"
+  }
+}

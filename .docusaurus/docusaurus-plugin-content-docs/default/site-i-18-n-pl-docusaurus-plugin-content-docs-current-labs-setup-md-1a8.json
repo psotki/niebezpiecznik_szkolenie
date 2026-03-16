@@ -1,0 +1,23 @@
+{
+  "id": "labs/setup",
+  "title": "Konfiguracja laboratorium",
+  "description": "Przed uruchomieniem jakiegokolwiek laboratorium upewnij się, że w środowisku Kali Linux zainstalowane są wymagane narzędzia.",
+  "source": "@site/i18n/pl/docusaurus-plugin-content-docs/current/labs/setup.md",
+  "sourceDirName": "labs",
+  "slug": "/labs/setup",
+  "permalink": "/pl/docs/labs/setup",
+  "draft": false,
+  "unlisted": false,
+  "tags": [],
+  "version": "current",
+  "sidebarPosition": 1,
+  "frontMatter": {
+    "title": "Konfiguracja laboratorium",
+    "sidebar_position": 1
+  },
+  "sidebar": "labsSidebar",
+  "next": {
+    "title": "A01 — Broken Access Control",
+    "permalink": "/pl/docs/labs/a01-broken-access-control"
+  }
+}

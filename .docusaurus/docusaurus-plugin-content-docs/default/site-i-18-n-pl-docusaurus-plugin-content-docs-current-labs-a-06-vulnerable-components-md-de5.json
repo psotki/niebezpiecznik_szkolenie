@@ -1,0 +1,54 @@
+{
+  "id": "labs/a06-vulnerable-components",
+  "title": "A06 — Vulnerable Components",
+  "description": "Zakres laboratorium",
+  "source": "@site/i18n/pl/docusaurus-plugin-content-docs/current/labs/a06-vulnerable-components.md",
+  "sourceDirName": "labs",
+  "slug": "/labs/a06-vulnerable-components",
+  "permalink": "/pl/docs/labs/a06-vulnerable-components",
+  "draft": false,
+  "unlisted": false,
+  "tags": [
+    {
+      "inline": true,
+      "label": "lab",
+      "permalink": "/pl/docs/tags/lab"
+    },
+    {
+      "inline": true,
+      "label": "owasp-a06",
+      "permalink": "/pl/docs/tags/owasp-a-06"
+    },
+    {
+      "inline": true,
+      "label": "fingerprinting",
+      "permalink": "/pl/docs/tags/fingerprinting"
+    },
+    {
+      "inline": true,
+      "label": "dependency-scanning",
+      "permalink": "/pl/docs/tags/dependency-scanning"
+    }
+  ],
+  "version": "current",
+  "sidebarPosition": 6,
+  "frontMatter": {
+    "title": "A06 — Vulnerable Components",
+    "sidebar_position": 6,
+    "tags": [
+      "lab",
+      "owasp-a06",
+      "fingerprinting",
+      "dependency-scanning"
+    ]
+  },
+  "sidebar": "labsSidebar",
+  "previous": {
+    "title": "A05 — Security Misconfiguration",
+    "permalink": "/pl/docs/labs/a05-misconfiguration"
+  },
+  "next": {
+    "title": "A07 — Authentication Failures",
+    "permalink": "/pl/docs/labs/a07-auth-failures"
+  }
+}

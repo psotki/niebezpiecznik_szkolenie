@@ -1,0 +1,54 @@
+{
+  "id": "theory/idor",
+  "title": "IDOR (Insecure Direct Object Reference)",
+  "description": "IDOR lets an attacker access other users' data simply by changing an ID in the URL — because the server never checks if you're allowed to see it.",
+  "source": "@site/docs/theory/02-idor.md",
+  "sourceDirName": "theory",
+  "slug": "/theory/idor",
+  "permalink": "/docs/theory/idor",
+  "draft": false,
+  "unlisted": false,
+  "tags": [
+    {
+      "inline": true,
+      "label": "idor",
+      "permalink": "/docs/tags/idor"
+    },
+    {
+      "inline": true,
+      "label": "access-control",
+      "permalink": "/docs/tags/access-control"
+    },
+    {
+      "inline": true,
+      "label": "authorization",
+      "permalink": "/docs/tags/authorization"
+    },
+    {
+      "inline": true,
+      "label": "owasp",
+      "permalink": "/docs/tags/owasp"
+    }
+  ],
+  "version": "current",
+  "sidebarPosition": 3,
+  "frontMatter": {
+    "title": "IDOR (Insecure Direct Object Reference)",
+    "sidebar_position": 3,
+    "tags": [
+      "idor",
+      "access-control",
+      "authorization",
+      "owasp"
+    ]
+  },
+  "sidebar": "theorySidebar",
+  "previous": {
+    "title": "Endpoint Discovery",
+    "permalink": "/docs/theory/endpoints"
+  },
+  "next": {
+    "title": "Path Traversal",
+    "permalink": "/docs/theory/path-traversal"
+  }
+}

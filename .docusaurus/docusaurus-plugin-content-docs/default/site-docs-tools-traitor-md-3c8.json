@@ -1,0 +1,42 @@
+{
+  "id": "tools/traitor",
+  "title": "Traitor",
+  "description": "One-liner: Automatic Linux privilege escalation tool that scans for and exploits common escalation vectors after you have shell access.",
+  "source": "@site/docs/tools/traitor.md",
+  "sourceDirName": "tools",
+  "slug": "/tools/traitor",
+  "permalink": "/docs/tools/traitor",
+  "draft": false,
+  "unlisted": false,
+  "tags": [
+    {
+      "inline": true,
+      "label": "tool",
+      "permalink": "/docs/tags/tool"
+    },
+    {
+      "inline": true,
+      "label": "privesc",
+      "permalink": "/docs/tags/privesc"
+    }
+  ],
+  "version": "current",
+  "sidebarPosition": 8,
+  "frontMatter": {
+    "title": "Traitor",
+    "sidebar_position": 8,
+    "tags": [
+      "tool",
+      "privesc"
+    ]
+  },
+  "sidebar": "toolsSidebar",
+  "previous": {
+    "title": "Hydra",
+    "permalink": "/docs/tools/hydra"
+  },
+  "next": {
+    "title": "Hashcat",
+    "permalink": "/docs/tools/hashcat"
+  }
+}

@@ -1,0 +1,48 @@
+{
+  "id": "theory/burp-suite",
+  "title": "Burp Suite — HTTP Interception",
+  "description": "Burp Suite is a man-in-the-middle proxy that intercepts and manipulates HTTP/S traffic between your browser and a server, making it the go-to tool for web application security testing.",
+  "source": "@site/docs/theory/06-burp-suite.md",
+  "sourceDirName": "theory",
+  "slug": "/theory/burp-suite",
+  "permalink": "/docs/theory/burp-suite",
+  "draft": false,
+  "unlisted": false,
+  "tags": [
+    {
+      "inline": true,
+      "label": "tool",
+      "permalink": "/docs/tags/tool"
+    },
+    {
+      "inline": true,
+      "label": "proxy",
+      "permalink": "/docs/tags/proxy"
+    },
+    {
+      "inline": true,
+      "label": "recon",
+      "permalink": "/docs/tags/recon"
+    }
+  ],
+  "version": "current",
+  "sidebarPosition": 7,
+  "frontMatter": {
+    "title": "Burp Suite — HTTP Interception",
+    "sidebar_position": 7,
+    "tags": [
+      "tool",
+      "proxy",
+      "recon"
+    ]
+  },
+  "sidebar": "theorySidebar",
+  "previous": {
+    "title": "Privilege Escalation",
+    "permalink": "/docs/theory/privilege-escalation"
+  },
+  "next": {
+    "title": "TLS & Certificates",
+    "permalink": "/docs/theory/tls-certificates"
+  }
+}
