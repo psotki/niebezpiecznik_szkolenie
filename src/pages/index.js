@@ -70,7 +70,6 @@ export default function Home() {
 
         <div style={{ textAlign: 'center', padding: '20px 40px 60px', color: 'var(--ifm-color-content-secondary)', fontSize: '0.85rem' }}>
           <p>💡 Use the search bar (top-right) to find any topic instantly.</p>
-          <p>All content sourced exclusively from Niebezpiecznik training materials.</p>
         </div>
       </main>
     </Layout>
