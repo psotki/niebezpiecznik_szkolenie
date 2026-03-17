@@ -36,5 +36,5 @@ Podczas szkolenia zademonstrowano błędną konfigurację obejmującą Jira, Tom
 - Nigdy nie polegaj wyłącznie na regułach dopasowywania ciągów znaków (np. „blokuj, jeśli URL zawiera /admin") — stosuj kontrole strukturalne
 
 :::tip 💡 Łatwe do zapamiętania
-Path traversal jest jak gość hotelowy proszący o „pokój 100, potem dwa piętra wyżej i w lewo" — jeśli recepcjonista dosłownie podąża za wskazówkami zamiast sprawdzić numer pokoju, trafia tam, gdzie nie powinien.
+Path traversal jest jak polecenie dla archiwisty „weź folder A, przejdź dwa poziomy wyżej, a potem otwórz archiwum zastrzeżone" — jeśli podąża dosłownie za ścieżką bez sprawdzania uprawnień na każdym kroku, wychodzi poza zamierzony obszar. `../` w adresie URL to dokładnie taka instrukcja: przejdź o jeden poziom wyżej w drzewie katalogów.
 :::

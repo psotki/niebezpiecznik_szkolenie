@@ -36,5 +36,5 @@ In the training, a misconfiguration involving Jira, Tomcat, and Nginx was demons
 - Never rely solely on string-matching rules (e.g., "block if URL contains /admin") — use structural checks
 
 :::tip 💡 Easy to remember
-Path traversal is like a hotel guest asking for "room 100, then go up two floors and left" — if the receptionist follows directions literally instead of checking the room number, they end up somewhere they shouldn't be.
+Path traversal is like telling a filing clerk "take folder A, go up two levels, then open the restricted archive" — if they follow the path literally without checking whether each step is allowed, you've escaped the intended boundary. The `../` in a URL is exactly that instruction: go up one level in the directory tree.
 :::

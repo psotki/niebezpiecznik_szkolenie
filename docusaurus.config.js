@@ -7,8 +7,8 @@ const config = {
   tagline: 'OWASP-focused cybersecurity knowledge base',
   favicon: 'img/favicon.ico',
 
-  url: 'https://www.notatkizeszkolenia.pl',
-  baseUrl: '/',
+  url: 'https://psotki.github.io',
+  baseUrl: '/niebezpiecznik_szkolenie/',
 
   organizationName: 'psotki',
   projectName: 'niebezpiecznik_szkolenie',

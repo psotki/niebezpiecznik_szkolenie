@@ -32,5 +32,5 @@ Organizacja uruchamiająca TLS 1.0 na starszym serwerze jest podatna na ataki do
 - Monitoruj logi Certificate Transparency pod kątem nieautoryzowanych certyfikatów wystawionych dla Twoich domen
 
 :::tip 💡 Łatwe do zapamiętania
-TLS to koperta — logi CT to urząd pocztowy prowadzący publiczny rejestr każdej kiedykolwiek wysłanej koperty.
+Akceptowanie TLS 1.0 jest jak zamontowanie drzwi z wysokim zabezpieczeniem, ale pozostawienie ich otwartych — z zewnątrz wygląda na chronione, ale atakujący wiedzą dokładnie, jak obniżyć wersję połączenia i odczytać całą zawartość. Logi CT to publiczny rejestr: każdy certyfikat kiedykolwiek wystawiony przez Twoją organizację jest tam wymieniony — w tym subdomeny, o których wolałbyś, żeby nikt nie wiedział.
 :::

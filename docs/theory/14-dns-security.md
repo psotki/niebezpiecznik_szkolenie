@@ -45,5 +45,5 @@ This reveals subdomains that may not appear in public DNS — staging servers, i
 - Ensure internal and staging services are not exposed with publicly trusted TLS certificates
 
 :::tip 💡 Easy to remember
-Certificate Transparency is like a public noticeboard where every door you've ever put a lock on gets listed — great for auditors, great for attackers too.
+Domain squatting is like someone opening a shop called "Paypa1" next door to PayPal — most victims won't notice the swapped character until they've already handed over their password. CT logs are the public business registry: every subdomain you've ever put a TLS certificate on is listed there, which means attackers can find your forgotten staging servers before you remember they exist.
 :::

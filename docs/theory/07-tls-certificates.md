@@ -32,5 +32,5 @@ An organization running TLS 1.0 on a legacy server is vulnerable to protocol dow
 - Monitor Certificate Transparency logs for unauthorized certificates issued for your domains
 
 :::tip 💡 Easy to remember
-TLS is the envelope — CT logs are the post office keeping a public record of every envelope ever sent.
+Accepting TLS 1.0 is like fitting a high-security door but leaving it unlocked — it looks protected from the outside, but attackers know exactly how to downgrade the connection and read everything inside. CT logs are the public register: every certificate your organisation has ever issued is listed there, including subdomains you'd rather keep quiet.
 :::

@@ -45,5 +45,5 @@ Ujawnia to subdomeny, które mogą nie pojawić się w publicznym DNS — serwer
 - Upewnij się, że usługi wewnętrzne i staging nie są eksponowane z publicznie zaufanymi certyfikatami TLS
 
 :::tip 💡 Łatwe do zapamiętania
-Certificate Transparency jest jak publiczna tablica ogłoszeń, na której widnieje lista każdych drzwi, na które kiedykolwiek założyłeś kłódkę — świetna dla audytorów, ale też dla atakujących.
+Domain squatting to jak ktoś otwierający sklep „Paypa1" tuż obok PayPala — większość ofiar nie zauważy zamienionego znaku, dopóki nie poda hasła. Logi CT to publiczny rejestr: każda subdomena, dla której kiedykolwiek wystawiłeś certyfikat TLS, jest tam widoczna — co oznacza, że atakujący mogą znaleźć Twoje zapomniane serwery testowe, zanim Ty sam o nich przypomnisz.
 :::
